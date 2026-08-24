@@ -54,36 +54,35 @@
 
   /* ===================== TOP NAVBAR (header-only layout, no sidebar) ===================== */
   .navbar{
-    background:linear-gradient(120deg,#1B72E0 0%,#1568D4 55%,#0F5BC4 100%); background-size:200% 200%;
-    animation:gradientDrift 9s ease-in-out infinite;
+    background:rgba(255,255,255,.72);
+    -webkit-backdrop-filter:blur(14px) saturate(160%);
+    backdrop-filter:blur(14px) saturate(160%);
     height:68px; flex-shrink:0; display:flex; align-items:center; justify-content:space-between;
-    padding:0 22px; position:sticky; top:0; z-index:40; box-shadow:0 4px 18px rgba(8,14,60,.18);
-    border-bottom:1px solid transparent;
-    transition:background .4s var(--ease), backdrop-filter .4s var(--ease), box-shadow .4s var(--ease), border-color .4s var(--ease);
+    padding:0 22px; position:sticky; top:0; z-index:40; box-shadow:0 1px 0 rgba(11,11,15,.04);
+    border-bottom:1px solid var(--line-soft);
+    transition:background .4s var(--ease), box-shadow .4s var(--ease), border-color .4s var(--ease);
   }
-  /* Glass / frosted effect once the page is scrolled */
+  /* Slightly stronger glass effect once the page is scrolled */
   .navbar.scrolled{
-    background:linear-gradient(120deg,rgba(27,114,224,.55) 0%,rgba(21,104,212,.55) 55%,rgba(15,91,196,.55) 100%);
-    -webkit-backdrop-filter:blur(12px) saturate(160%);
-    backdrop-filter:blur(12px) saturate(160%);
-    box-shadow:0 1px 0 rgba(255,255,255,.22) inset, 0 10px 32px rgba(8,14,60,.30);
-    border-bottom:1px solid rgba(255,255,255,.20);
+    background:rgba(255,255,255,.86);
+    box-shadow:0 4px 18px rgba(11,11,15,.08);
+    border-bottom:1px solid var(--line);
   }
   .nv-left{ display:flex; align-items:center; gap:22px; min-width:0; }
   .nv-brand{ display:flex; align-items:center; gap:11px; flex-shrink:0; }
   .nv-logo{ width:38px; height:38px; border-radius:50%; background:#fff; box-shadow:0 2px 6px rgba(0,0,0,.15); display:flex; align-items:center; justify-content:center; flex-shrink:0; }
   .nv-logo img{ width:100%; height:100%; object-fit:cover; border-radius:50%; }
   .nv-brand-text{ line-height:1.25; white-space:nowrap; }
-  .nv-brand-text .n{ font-weight:800; font-size:13.5px; color:#fff; }
-  .nv-brand-text .s{ font-size:9px; color:rgba(255,255,255,.82); text-transform:uppercase; letter-spacing:.07em; font-weight:700; margin-top:2px; }
+  .nv-brand-text .n{ font-weight:800; font-size:13.5px; color:var(--ink); }
+  .nv-brand-text .s{ font-size:9px; color:var(--ink-faint); text-transform:uppercase; letter-spacing:.07em; font-weight:700; margin-top:2px; }
 
-  .nv-menu{ display:flex; align-items:center; gap:2px; background:rgba(9,12,26,.72); border:1px solid rgba(255,255,255,.10); border-radius:14px; padding:4px; box-shadow:0 2px 8px rgba(0,0,0,.18); }
+  .nv-menu{ display:flex; align-items:center; gap:2px; background:transparent; border:none; border-radius:14px; padding:4px; box-shadow:none; }
   .nv-item{
     position:relative; display:flex; align-items:center; gap:6px; padding:9px 14px; border-radius:10px;
-    color:rgba(255,255,255,.88); font-size:13.5px; font-weight:600; cursor:pointer; white-space:nowrap;
+    color:var(--ink-soft); font-size:13.5px; font-weight:600; cursor:pointer; white-space:nowrap;
     transition:background .15s var(--ease), color .15s var(--ease);
   }
-  .nv-item:hover{ background:rgba(255,255,255,.14); color:#fff; }
+  .nv-item:hover{ background:var(--primary-tint); color:var(--primary); }
   .nv-item.active{ background:var(--primary); color:#fff; }
   .nv-item .chev{ width:12px; height:12px; transition:transform .2s var(--ease); }
   .nv-item.expandable.open .chev{ transform:rotate(180deg); }
@@ -100,20 +99,20 @@
 
   .nv-right{ display:flex; align-items:center; gap:10px; flex-shrink:0; }
   .nv-search{ position:relative; }
-  .nv-search svg{ position:absolute; left:11px; top:50%; transform:translateY(-50%); width:14px; height:14px; color:rgba(255,255,255,.6); }
+  .nv-search svg{ position:absolute; left:11px; top:50%; transform:translateY(-50%); width:14px; height:14px; color:var(--ink-faint); }
   .nv-search input{
-    width:200px; height:36px; border:1px solid rgba(255,255,255,.14); border-radius:9px; padding:0 12px 0 32px;
-    font-size:13px; background:rgba(9,12,26,.72); color:#fff; transition:width .2s var(--ease), background .2s;
+    width:200px; height:36px; border:1px solid var(--line); border-radius:9px; padding:0 12px 0 32px;
+    font-size:13px; background:var(--surface); color:var(--ink); transition:width .2s var(--ease), background .2s;
   }
-  .nv-search input::placeholder{ color:rgba(255,255,255,.55); }
-  .nv-search input:focus{ outline:none; width:240px; background:rgba(9,12,26,.88); border-color:rgba(255,255,255,.35); }
+  .nv-search input::placeholder{ color:var(--ink-faint); }
+  .nv-search input:focus{ outline:none; width:240px; background:var(--surface); border-color:var(--primary-light); }
 
   .nv-icon-round{
-    width:36px; height:36px; border-radius:9px; border:1px solid rgba(255,255,255,.14); background:rgba(9,12,26,.72);
-    display:flex; align-items:center; justify-content:center; cursor:pointer; position:relative; color:rgba(255,255,255,.92);
+    width:36px; height:36px; border-radius:9px; border:1px solid var(--line); background:var(--surface);
+    display:flex; align-items:center; justify-content:center; cursor:pointer; position:relative; color:var(--ink-soft);
     transition:border-color .15s, background .15s;
   }
-  .nv-icon-round:hover{ border-color:rgba(255,255,255,.35); background:rgba(9,12,26,.9); }
+  .nv-icon-round:hover{ border-color:var(--primary-light); background:var(--primary-tint); }
   .nv-icon-round svg{ width:16px; height:16px; }
   .ping{ position:absolute; top:6px; right:7px; width:7px; height:7px; border-radius:50%; background:var(--accent); animation:pulseRing 2s infinite; }
 
@@ -130,13 +129,13 @@
     display:flex; align-items:center; gap:9px; padding:5px 10px 5px 6px; border-radius:11px;
     cursor:pointer; border:1px solid transparent; transition:background .15s, border-color .15s; position:relative;
   }
-  .tb-profile:hover, .tb-profile.open{ background:rgba(9,12,26,.72); border-color:rgba(255,255,255,.16); }
-  .tb-profile-avatar{ width:32px; height:32px; border-radius:50%; overflow:hidden; flex-shrink:0; box-shadow:0 0 0 2px rgba(255,255,255,.5); }
+  .tb-profile:hover, .tb-profile.open{ background:var(--primary-tint); border-color:var(--line); }
+  .tb-profile-avatar{ width:32px; height:32px; border-radius:50%; overflow:hidden; flex-shrink:0; box-shadow:0 0 0 2px var(--line); }
   .tb-profile-avatar img{ width:100%; height:100%; object-fit:cover; display:block; }
   .tb-profile-meta{ line-height:1.2; text-align:left; }
-  .tb-profile-name{ font-size:12.5px; font-weight:700; color:#fff; white-space:nowrap; }
-  .tb-profile-role{ font-size:10.5px; color:rgba(255,255,255,.78); font-weight:500; }
-  .tb-profile .chev{ width:14px; height:14px; color:rgba(255,255,255,.85); transition:transform .2s var(--ease); }
+  .tb-profile-name{ font-size:12.5px; font-weight:700; color:var(--ink); white-space:nowrap; }
+  .tb-profile-role{ font-size:10.5px; color:var(--ink-faint); font-weight:500; }
+  .tb-profile .chev{ width:14px; height:14px; color:var(--ink-soft); transition:transform .2s var(--ease); }
   .tb-profile.open .chev{ transform:rotate(180deg); }
 
   .tb-dropdown{
@@ -162,21 +161,21 @@
   .tb-dropdown-sep{ height:1px; background:var(--line-soft); margin:6px 4px; }
 
   .nv-hamburger{
-    display:none; width:38px; height:38px; border-radius:9px; border:1px solid rgba(255,255,255,.28);
-    background:rgba(255,255,255,.10); align-items:center; justify-content:center; cursor:pointer; flex-shrink:0;
-    color:#fff;
+    display:none; width:38px; height:38px; border-radius:9px; border:1px solid var(--line);
+    background:var(--surface); align-items:center; justify-content:center; cursor:pointer; flex-shrink:0;
+    color:var(--ink-soft);
   }
   .nv-hamburger svg{ width:18px; height:18px; }
 
   .nv-mobile-menu{
-    display:none; flex-direction:column; gap:2px; background:#0F5BC4; padding:8px 14px 14px;
+    display:none; flex-direction:column; gap:2px; background:var(--surface); padding:8px 14px 14px; border-bottom:1px solid var(--line-soft);
   }
   .nv-mobile-menu.open{ display:flex; }
   .nv-mobile-menu .nv-item{ width:100%; }
-  .nv-mobile-menu .nv-submenu{ position:static; opacity:1; visibility:visible; transform:none; box-shadow:none; background:rgba(255,255,255,.08); margin:2px 0 6px 26px; display:none; }
+  .nv-mobile-menu .nv-submenu{ position:static; opacity:1; visibility:visible; transform:none; box-shadow:none; background:var(--primary-tint); margin:2px 0 6px 26px; display:none; }
   .nv-mobile-menu .nv-submenu.open{ display:block; animation:none; }
-  .nv-mobile-menu .nv-subitem{ color:rgba(255,255,255,.85); }
-  .nv-mobile-menu .nv-subitem:hover{ background:rgba(255,255,255,.14); color:#fff; }
+  .nv-mobile-menu .nv-subitem{ color:var(--ink-soft); }
+  .nv-mobile-menu .nv-subitem:hover{ background:rgba(255,255,255,.6); color:var(--primary); }
 
   .content{ padding:26px 28px 48px; }
   .page-head{ display:flex; align-items:flex-end; justify-content:space-between; margin-bottom:22px; animation:riseIn .5s var(--ease) both; }
@@ -327,9 +326,7 @@
   .mrn{ color:var(--ink-soft); }
   .status{ display:flex; align-items:center; gap:8px; }
   .acuity{ width:9px; height:9px; border-radius:50%; flex-shrink:0; background:currentColor; }
-  .status.urgent .acuity{ animation:pulseRing 1.8s infinite; }
   .status-label{ font-size:12.5px; font-weight:600; }
-  .status.urgent{ color:var(--accent); }
   .status.progress{ color:var(--warning); }
   .status.done{ color:var(--success); }
   .status.scheduled{ color:var(--ink-faint); }
@@ -426,7 +423,7 @@
     </div>
 
     <nav class="nv-menu" aria-label="Primary">
-      <div class="nv-item active" role="button" tabindex="0" aria-current="page">
+      <div class="nv-item active" id="navPatientInfo" role="button" tabindex="0" aria-current="page" onclick="showSection('overview')" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();showSection('overview');}">
         <svg aria-hidden="true" focusable="false" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="16" height="16"><path d="M16 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="8.5" cy="7" r="4"/><path d="M20 8v6"/><path d="M23 11h-6"/></svg>
         Patient Information
       </div>
@@ -440,7 +437,7 @@
           <div class="nv-subitem" role="menuitem" tabindex="0">Surgical Note</div>
         </div>
       </div>
-      <div class="nv-item" role="button" tabindex="0">
+      <div class="nv-item" id="navDiagnostics" role="button" tabindex="0" onclick="showSection('patients')" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();showSection('patients');}">
         <svg aria-hidden="true" focusable="false" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="16" height="16"><path d="M22 12h-4l-3 9L9 3l-3 9H2"/></svg>
         Diagnostics
       </div>
@@ -498,7 +495,7 @@
 
 <!-- Mobile dropdown menu (shown when hamburger is tapped, small screens only) -->
 <div class="nv-mobile-menu" id="mobileMenu">
-  <div class="nv-item active" role="button" tabindex="0" aria-current="page">
+  <div class="nv-item active" id="navPatientInfoMobile" role="button" tabindex="0" aria-current="page" onclick="showSection('overview')" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();showSection('overview');}">
     <svg aria-hidden="true" focusable="false" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="16" height="16"><path d="M16 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="8.5" cy="7" r="4"/><path d="M20 8v6"/><path d="M23 11h-6"/></svg>
     Patient Information
   </div>
@@ -512,7 +509,7 @@
     <div class="nv-subitem" role="menuitem" tabindex="0">Diagnostic Visit</div>
     <div class="nv-subitem" role="menuitem" tabindex="0">Surgical Note</div>
   </div>
-  <div class="nv-item" role="button" tabindex="0">
+  <div class="nv-item" id="navDiagnosticsMobile" role="button" tabindex="0" onclick="showSection('patients')" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();showSection('patients');}">
     <svg aria-hidden="true" focusable="false" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="16" height="16"><path d="M22 12h-4l-3 9L9 3l-3 9H2"/></svg>
     Diagnostics
   </div>
@@ -520,6 +517,7 @@
 
 <div class="content" id="mainContent" role="main">
 
+<div id="overviewSection">
   <div class="page-head">
     <div>
       <div class="eyebrow">
@@ -535,108 +533,102 @@
   </div>
 
   <div class="section-title"><h2>Today's Overview</h2><div class="line"></div></div>
+  <!-- TODO: wire these two counts to the real DB (ConsultantDashboardController) —
+       total_patients_checked = all-time count of checked patients for this consultant
+       checked_today = count of patients checked where visit_date = today -->
   <div class="stat-strip">
     <div class="stat-card">
-      <div class="stat-top"><span class="stat-label">Today's patients</span>
+      <div class="stat-top"><span class="stat-label">Total patients checked</span>
         <div class="stat-icon blue"><svg aria-hidden="true" focusable="false" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 00-3-3.87"/><path d="M16 3.13a4 4 0 010 7.75"/></svg></div>
       </div>
       <div class="stat-bottom">
-        <span class="stat-value blue" data-count="18">0</span>
-        <span class="stat-trend up"><svg aria-hidden="true" focusable="false" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M18 15l-6-6-6 6"/></svg>12%</span>
+        <span class="stat-value blue" data-count="1842">0</span>
       </div>
     </div>
     <div class="stat-card">
-      <div class="stat-top"><span class="stat-label">Awaiting review</span>
-        <div class="stat-icon amber"><svg aria-hidden="true" focusable="false" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg></div>
-      </div>
-      <div class="stat-bottom">
-        <span class="stat-value amber" data-count="6">0</span>
-        <span class="stat-trend down"><svg aria-hidden="true" focusable="false" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M6 9l6 6 6-6"/></svg>3%</span>
-      </div>
-    </div>
-    <div class="stat-card">
-      <div class="stat-top"><span class="stat-label">Completed</span>
+      <div class="stat-top"><span class="stat-label">Checked today</span>
         <div class="stat-icon green"><svg aria-hidden="true" focusable="false" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 11.08V12a10 10 0 11-5.93-9.14"/><path d="M22 4L12 14.01l-3-3"/></svg></div>
       </div>
       <div class="stat-bottom">
-        <span class="stat-value green" data-count="11">0</span>
-        <span class="stat-trend up"><svg aria-hidden="true" focusable="false" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M18 15l-6-6-6 6"/></svg>8%</span>
-      </div>
-    </div>
-    <div class="stat-card">
-      <div class="stat-top"><span class="stat-label">Urgent flags</span>
-        <div class="stat-icon coral"><svg aria-hidden="true" focusable="false" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M10.29 3.86L1.82 18a2 2 0 001.71 3h16.94a2 2 0 001.71-3L13.71 3.86a2 2 0 00-3.42 0z"/><path d="M12 9v4"/><path d="M12 17h.01"/></svg></div>
-      </div>
-      <div class="stat-bottom">
-        <span class="stat-value coral" data-count="1">0</span>
-        <span class="stat-trend down"><svg aria-hidden="true" focusable="false" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M6 9l6 6 6-6"/></svg>1</span>
+        <span class="stat-value green" data-count="18">0</span>
       </div>
     </div>
   </div>
 
-  <div class="section-title"><h2>Visit Breakdown</h2><div class="line"></div></div>
+  <!-- TODO: wire to real data — group $patientRows (unifiedPatientRows()) by
+       'type' (clinical / diagnostics / surgical), from
+       ConsultantDashboardController::index() -->
+  <div class="section-title"><h2>Patients by Type</h2><div class="line"></div></div>
   <div class="donut-row">
     <div class="chart-card">
-      <div class="chart-head"><div><h3>Visit types</h3><p>Today's breakdown · 18 total</p></div></div>
+      <div class="chart-head"><div><h3>Patient list breakdown</h3><p>Today's patients tab · 17 total</p></div></div>
       <div class="chart-wrap donut">
         <canvas id="typeChart"></canvas>
-        <div class="donut-center"><div class="num">18</div><div class="lbl">Total</div></div>
+        <div class="donut-center"><div class="num">17</div><div class="lbl">Total</div></div>
       </div>
       <div class="donut-legend">
-        <div class="pill"><span style="background:#1E39E0"></span>New · 7</div>
-        <div class="pill"><span style="background:#A9B6F5"></span>Follow-up · 6</div>
-        <div class="pill"><span style="background:#25A876"></span>Post-op · 4</div>
-        <div class="pill"><span style="background:#E14B4B"></span>Urgent · 1</div>
+        <div class="pill"><span style="background:#1E39E0"></span>Clinical · 9</div>
+        <div class="pill"><span style="background:#A9B6F5"></span>Diagnostics · 5</div>
+        <div class="pill"><span style="background:#25A876"></span>Surgical · 3</div>
       </div>
     </div>
 
+    <!-- TODO: wire to real data — count ClinicalVisit::STATUS_* stages
+         (patient_status column) for today, per
+         ConsultantDashboardController::STATUS_FILTER_OPTIONS -->
     <div class="dark-donut-card">
       <div class="chart-head">
-        <div><h3>Case mix by specialty area</h3><p>Today's consultations across departments</p></div>
+        <div><h3>Clinical status breakdown</h3><p>Today's patients, by journey stage</p></div>
       </div>
       <div class="dark-donut-body">
         <div class="dark-donut-wrap">
           <canvas id="specialtyChart"></canvas>
         </div>
         <div class="side-legend">
-          <div class="side-legend-item"><span class="side-legend-dot" style="background:#0B2A5C"></span>Cataract <span class="pct">20%</span></div>
-          <div class="side-legend-item"><span class="side-legend-dot" style="background:#1E39E0"></span>Retina <span class="pct">20%</span></div>
-          <div class="side-legend-item"><span class="side-legend-dot" style="background:#E0AC3B"></span>Glaucoma <span class="pct">20%</span></div>
-          <div class="side-legend-item"><span class="side-legend-dot" style="background:#E14B4B"></span>Cornea <span class="pct">20%</span></div>
-          <div class="side-legend-item"><span class="side-legend-dot" style="background:#5FBFB3"></span>Pediatric <span class="pct">20%</span></div>
+          <div class="side-legend-item"><span class="side-legend-dot" style="background:#0B2A5C"></span>Waiting for Consultant <span class="pct">24%</span></div>
+          <div class="side-legend-item"><span class="side-legend-dot" style="background:#1E39E0"></span>In Consultant <span class="pct">18%</span></div>
+          <div class="side-legend-item"><span class="side-legend-dot" style="background:#E0AC3B"></span>Waiting for Screening <span class="pct">18%</span></div>
+          <div class="side-legend-item"><span class="side-legend-dot" style="background:#E14B4B"></span>Screening in Progress <span class="pct">18%</span></div>
+          <div class="side-legend-item"><span class="side-legend-dot" style="background:#5FBFB3"></span>Visit Complete <span class="pct">22%</span></div>
         </div>
       </div>
     </div>
   </div>
 
-  <div class="section-title"><h2>Volume Trend</h2><div class="line"></div></div>
+  <!-- TODO: wire to real data — group InternalReferral / patientRows by
+       created_at date, using the existing start_date/end_date filters
+       already supported in ConsultantDashboardController::index() -->
+  <div class="section-title"><h2>Patients Trend</h2><div class="line"></div></div>
   <div class="chart-card chart-card-full">
     <div class="chart-head">
-      <div><h3 id="volTitle">Patient volume this week</h3><p id="volSub">Consultations across all visit types</p></div>
+      <div><h3 id="volTitle">Patients trend this week</h3><p id="volSub">Referred + scheduled patients over time</p></div>
       <div class="vol-toggle">
         <button type="button" class="active" onclick="setVolRange('week')">This Week</button>
-        <button type="button" onclick="setVolRange('6mo')">Last 6 Months</button>
+        <button type="button" onclick="setVolRange('month')">This Month</button>
+        <button type="button" onclick="setVolRange('start')">From Start</button>
       </div>
     </div>
     <div class="chart-wrap"><canvas id="volumeChart"></canvas></div>
   </div>
 
+  <!-- TODO: wire to real data — Visit Complete count vs today's total
+       (todayTabCount), from ConsultantDashboardController::index() -->
   <div class="chart-card progress-card">
-    <div class="chart-head"><div><h3>Today's progress</h3><p>Your consultation workload</p></div></div>
+    <div class="chart-head"><div><h3>Today's progress</h3><p>Visit Complete vs today's patients</p></div></div>
     <div class="lin-progress-num">61% completed</div>
-    <div class="lin-progress-sub">11 of 18 today's patients seen through to completion</div>
+    <div class="lin-progress-sub">11 of 18 today's patients marked Visit Complete</div>
     <div class="lin-progress-track">
       <div class="lin-progress-seg" style="width:61%; background:#25A876;"></div>
-      <div class="lin-progress-seg" style="width:33%; background:#E0AC3B;"></div>
-      <div class="lin-progress-seg" style="width:6%; background:#E14B4B;"></div>
+      <div class="lin-progress-seg" style="width:39%; background:#E0AC3B;"></div>
     </div>
     <div class="donut-legend" style="margin-top:14px;">
-      <div class="pill"><span style="background:#25A876"></span>Completed · 11</div>
-      <div class="pill"><span style="background:#E0AC3B"></span>Awaiting · 6</div>
-      <div class="pill"><span style="background:#E14B4B"></span>Urgent · 1</div>
+      <div class="pill"><span style="background:#25A876"></span>Visit Complete · 11</div>
+      <div class="pill"><span style="background:#E0AC3B"></span>Still in progress · 7</div>
     </div>
   </div>
 
+  <!-- TODO: wire to real data — Patient model has 'age_year' and 'gender'
+       columns (app/Models/Patient.php); group active patients by these -->
   <div class="section-title"><h2>Patient Demographics</h2><div class="line"></div></div>
   <div class="chart-card">
     <div class="chart-head">
@@ -645,15 +637,42 @@
     <div class="chart-wrap-tall"><canvas id="ageGenderChart"></canvas></div>
   </div>
 
-  <div class="section-title"><h2>Clinical Insights</h2><div class="line"></div></div>
+  <!-- TODO: wire to real data — diagnosticsQueueCount (pending) vs
+       performedHistory count (completed), from
+       ConsultantDashboardController::index() -->
+  <div class="section-title"><h2>Diagnostics Queue</h2><div class="line"></div></div>
   <div class="chart-card">
     <div class="chart-head">
-      <div><h3>Diagnoses by disease type</h3><p>Top conditions, last 30 days</p></div>
+      <div><h3>Pending vs completed tests</h3><p>This doctor's diagnostic orders</p></div>
     </div>
-    <div class="chart-wrap-tall"><canvas id="diseaseChart"></canvas></div>
+    <div class="chart-wrap donut">
+      <canvas id="diagnosticsChart"></canvas>
+      <div class="donut-center"><div class="num">14</div><div class="lbl">Total</div></div>
+    </div>
+    <div class="donut-legend">
+      <div class="pill"><span style="background:#E0AC3B"></span>Pending · 5</div>
+      <div class="pill"><span style="background:#25A876"></span>Completed · 9</div>
+    </div>
   </div>
 
-  <div class="section-title"><h2>Patients &amp; Diagnostics</h2><div class="line"></div></div>
+
+</div>
+<!-- /overviewSection -->
+
+<div id="patientsSection" style="display:none;">
+    <div class="page-head">
+    <div>
+      <div class="eyebrow">
+        <svg aria-hidden="true" focusable="false" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 00-3-3.87"/><path d="M16 3.13a4 4 0 010 7.75"/></svg>
+        Patients &amp; Diagnostics
+      </div>
+      <h1>Patients &amp; Diagnostics</h1>
+    </div>
+    <button type="button" class="btn btn-ghost" onclick="showSection('overview')">
+      <svg aria-hidden="true" focusable="false" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 12H5"/><path d="M12 19l-7-7 7-7"/></svg>
+      Back to Dashboard
+    </button>
+  </div>
   <div class="tabs">
     <div class="tab active">Patients <span class="count">18</span></div>
     <div class="tab">Diagnostics <span class="count">4</span></div>
@@ -680,7 +699,7 @@
         <label>Clinical status</label>
         <div class="input-wrap">
           <svg aria-hidden="true" focusable="false" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 11.08V12a10 10 0 11-5.93-9.14"/><path d="M22 4L12 14.01l-3-3"/></svg>
-          <select><option>All statuses</option><option>Scheduled</option><option>In progress</option><option>Completed</option><option>Urgent</option></select>
+          <select><option>All statuses</option><option>Scheduled</option><option>In progress</option><option>Completed</option></select>
           <svg aria-hidden="true" focusable="false" class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg>
         </div>
       </div>
@@ -741,7 +760,7 @@
         <tr>
           <td><div class="patient-cell"><div class="p-av" style="background:#1E39E0;">FZ</div><div><div class="p-nm">Fatima Zahra</div><div class="p-sb">54 · Female</div></div></div></td>
           <td class="mono mrn" data-label="MRN">MRN-08231</td><td data-label="Visit type">Post-op review</td>
-          <td data-label="Status"><div class="status urgent"><span class="acuity"></span><span class="status-label">Urgent</span></div></td>
+          <td data-label="Status"><div class="status progress"><span class="acuity"></span><span class="status-label">In progress</span></div></td>
           <td class="mono" data-label="Time">9:00 AM</td>
           <td data-label="Actions"><div class="row-actions">
             <button type="button" class="icon-btn" aria-label="View patient"><svg aria-hidden="true" focusable="false" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M1 12s4-7 11-7 11 7 11 7-4 7-11 7-11-7-11-7z"/><circle cx="12" cy="12" r="3"/></svg></button>
@@ -782,14 +801,42 @@
     </table>
     </div>
   </div>
+
 </div>
 
-<div class="demo-toggle" role="button" tabindex="0" aria-label="Toggle sample data" onclick="toggleDemo()" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();toggleDemo();}">
-  <svg aria-hidden="true" focusable="false" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 1l4 4-4 4"/><path d="M3 11V9a4 4 0 014-4h14"/><path d="M7 23l-4-4 4-4"/><path d="M21 13v2a4 4 0 01-4 4H3"/></svg>
-  Toggle empty ⇄ populated
 </div>
 
 <script>
+  function toggleDemo(force){
+    const table = document.getElementById('dataTable');
+    const empty = document.getElementById('emptyState');
+    if(!table || !empty) return;
+    const showTable = force !== undefined ? force : table.style.display === 'none';
+    table.style.display = showTable ? 'table' : 'none';
+    document.getElementById('populated')?.classList.toggle('show', showTable);
+    empty.classList.toggle('show', !showTable);
+  }
+
+  function showSection(section){
+    const overview = document.getElementById('overviewSection');
+    const patients = document.getElementById('patientsSection');
+    const isPatients = section === 'patients';
+    overview.style.display = isPatients ? 'none' : '';
+    patients.style.display = isPatients ? '' : 'none';
+
+    [['navPatientInfo','navPatientInfoMobile', !isPatients], ['navDiagnostics','navDiagnosticsMobile', isPatients]].forEach(([deskId, mobId, active]) => {
+      [deskId, mobId].forEach(id => {
+        const el = document.getElementById(id);
+        if (!el) return;
+        el.classList.toggle('active', active);
+        if (active) el.setAttribute('aria-current','page'); else el.removeAttribute('aria-current');
+      });
+    });
+
+    if (document.getElementById('mobileMenu').classList.contains('open')) toggleMobileMenu();
+    window.scrollTo({top:0, behavior:'smooth'});
+  }
+
   function toggleProfileMenu(e){
     e.stopPropagation();
     const profile = document.getElementById('tbProfile');
@@ -845,15 +892,6 @@
     document.getElementById('visitsSubmenu')?.classList.remove('open');
   });
 
-  function toggleDemo(force){
-    const table = document.getElementById('dataTable');
-    const empty = document.getElementById('emptyState');
-    const showTable = force !== undefined ? force : table.style.display === 'none';
-    table.style.display = showTable ? 'table' : 'none';
-    document.getElementById('populated').classList.toggle('show', showTable);
-    empty.classList.toggle('show', !showTable);
-  }
-
   document.querySelectorAll('.stat-value').forEach(el=>{
     const target = parseInt(el.dataset.count,10);
     let cur = 0;
@@ -902,6 +940,8 @@
   grad.addColorStop(0, 'rgba(30,57,224,.22)');
   grad.addColorStop(1, 'rgba(30,57,224,0)');
 
+  // TODO: replace these hardcoded arrays with a real fetch to the backend,
+  // e.g. GET /api/consultant/volume-trend?range=week|month|start
   const volRanges = {
     week:{
       title:'Patient volume this week', sub:'Consultations across all visit types',
@@ -909,8 +949,14 @@
       primaryLabel:'New', secondaryLabel:'Follow-up',
       primary:[9,12,14,10,16,11], secondary:[5,6,4,7,5,8]
     },
-    '6mo':{
-      title:'Patient volume — last 6 months', sub:'OPD consultations & surgeries trend',
+    month:{
+      title:'Patient volume this month', sub:'Consultations across all visit types',
+      labels:['Wk 1','Wk 2','Wk 3','Wk 4'],
+      primaryLabel:'New', secondaryLabel:'Follow-up',
+      primary:[52,61,58,64], secondary:[24,27,22,29]
+    },
+    start:{
+      title:'Patient volume — from start', sub:'OPD consultations & surgeries trend',
       labels:['Mar','Apr','May','Jun','Jul','Aug'],
       primaryLabel:'Consultations', secondaryLabel:'Surgeries',
       primary:[312,338,295,360,401,378], secondary:[48,52,44,58,63,60]
@@ -947,8 +993,9 @@
     volumeChart.data.datasets[1].label = r.secondaryLabel;
     volumeChart.data.datasets[1].data = r.secondary;
     volumeChart.update();
+    const order = ['week','month','start'];
     document.querySelectorAll('.vol-toggle button').forEach((b,i)=>{
-      b.classList.toggle('active', (key==='week' && i===0) || (key==='6mo' && i===1));
+      b.classList.toggle('active', order[i] === key);
     });
   }
 
@@ -999,13 +1046,13 @@
     }
   };
 
-  const typeGradients = [['#4A63E8','#1E39E0'], ['#C3CDF7','#A9B6F5'], ['#38C495','#25A876'], ['#EA6E6E','#E14B4B']];
+  const typeGradients = [['#4A63E8','#1E39E0'], ['#C3CDF7','#A9B6F5'], ['#38C495','#25A876']];
   new Chart(document.getElementById('typeChart'), {
     type:'doughnut',
     data:{
-      labels:['New consultation','Follow-up','Post-op review','Urgent'],
+      labels:['Clinical','Diagnostics','Surgical'],
       datasets:[{
-        data:[7,6,4,1],
+        data:[9,5,3],
         backgroundColor:(ctx) => ctx.dataIndex === undefined ? '#1E39E0' : sliceGradient(ctx, ...typeGradients[ctx.dataIndex]),
         borderWidth:0, hoverOffset:6
       }]
@@ -1035,14 +1082,29 @@
   new Chart(document.getElementById('specialtyChart'), {
     type:'doughnut',
     data:{
-      labels:['Cataract','Retina','Glaucoma','Cornea','Pediatric'],
+      labels:['Waiting for Consultant','In Consultant','Waiting for Screening','Screening in Progress','Visit Complete'],
       datasets:[{
-        data:[20,20,20,20,20],
+        data:[24,18,18,18,22],
         backgroundColor:(ctx) => ctx.dataIndex === undefined ? '#1E39E0' : sliceGradientToBlack(ctx, specialtyColors[ctx.dataIndex]),
         borderWidth:0, hoverOffset:6
       }]
     },
     options:{ responsive:true, maintainAspectRatio:false, cutout:'58%', plugins:{ legend:{ display:false } } },
+    plugins:[percentLabelsPlugin]
+  });
+
+  // ---- Diagnostics queue: pending vs completed ----
+  new Chart(document.getElementById('diagnosticsChart'), {
+    type:'doughnut',
+    data:{
+      labels:['Pending','Completed'],
+      datasets:[{
+        data:[5,9],
+        backgroundColor:(ctx) => ctx.dataIndex === undefined ? '#E0AC3B' : sliceGradient(ctx, ...[['#F2C868','#E0AC3B'], ['#38C495','#25A876']][ctx.dataIndex]),
+        borderWidth:0, hoverOffset:6
+      }]
+    },
+    options:{ responsive:true, maintainAspectRatio:false, cutout:'72%', plugins:{ legend:{ display:false } } },
     plugins:[percentLabelsPlugin]
   });
 
@@ -1060,36 +1122,22 @@
       indexAxis:'y', responsive:true, maintainAspectRatio:false,
       plugins:{
         legend:{ position:'bottom', labels:{ usePointStyle:true, pointStyle:'circle', boxWidth:7, padding:16, color:'#57575F', font:{ size:11.5, family:'Inter' } } },
-        tooltip:{ callbacks:{ label:(c)=> `${c.dataset.label}: ${Math.abs(c.parsed.x)}%` } }
+        tooltip:{
+          mode:'index', intersect:false,
+          backgroundColor:'#1B1B1F', titleColor:'#fff', bodyColor:'#fff',
+          padding:10, cornerRadius:8, displayColors:true, boxPadding:4,
+          titleFont:{ size:12, family:'Inter', weight:'600' },
+          bodyFont:{ size:12, family:'Inter' },
+          callbacks:{
+            title:(items)=> items.length ? `Age ${items[0].label}` : '',
+            label:(c)=> `${c.dataset.label}: ${Math.abs(c.parsed.x)}%`
+          }
+        }
       },
       scales:{
         x:{ stacked:true, grid:{ color:gridColor }, border:{ display:false },
             ticks:{ color:'#96969E', font:{ size:10.5, family:'Inter' }, callback:(v)=> Math.abs(v)+'%' } },
         y:{ stacked:true, grid:{ display:false }, border:{ display:false }, ticks:{ color:'#57575F', font:{ size:11, family:'Inter' } } }
-      }
-    }
-  });
-
-  // ---- Diagnoses by disease type ----
-  new Chart(document.getElementById('diseaseChart'), {
-    type:'bar',
-    data:{
-      labels:['Cataract','Refractive error','Glaucoma','Diabetic retinopathy','Conjunctivitis','Dry eye','Other'],
-      datasets:[{
-        data:[34,26,15,11,7,5,2],
-        backgroundColor:['#1E39E0','#4A63E8','#E0AC3B','#E14B4B','#5FBFB3','#7C6FE0','#B8B8C2'],
-        borderRadius:5, barThickness:16
-      }]
-    },
-    options:{
-      indexAxis:'y', responsive:true, maintainAspectRatio:false,
-      plugins:{
-        legend:{ display:false },
-        tooltip:{ callbacks:{ label:(c)=> `${c.parsed.x}% of diagnoses` } }
-      },
-      scales:{
-        x:{ grid:{ color:gridColor }, border:{ display:false }, ticks:{ color:'#96969E', font:{ size:10.5, family:'Inter' }, callback:(v)=> v+'%' }, suggestedMax:38 },
-        y:{ grid:{ display:false }, border:{ display:false }, ticks:{ color:'#57575F', font:{ size:11.5, family:'Inter' } } }
       }
     }
   });
