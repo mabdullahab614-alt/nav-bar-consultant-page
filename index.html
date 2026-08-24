@@ -825,6 +825,33 @@
   .diag-empty.show{display:block;}
   .diag-toolbar-note{font-size:11.5px;color:var(--ink-faint);}
   .diag-actions{display:flex;gap:6px;justify-content:flex-end;}
+
+  /* Consultant profile page */
+  .consultant-profile-section{display:none;padding:28px 30px 50px;background:var(--page-bg);min-height:calc(100vh - 76px);}
+  .consultant-profile-wrap{max-width:1120px;margin:0 auto;}
+  .consultant-profile-title{margin:0 0 6px;font-size:24px;font-weight:800;color:var(--ink);}
+  .consultant-profile-subtitle{margin:0 0 22px;color:var(--ink-soft);font-size:13px;}
+  .consultant-profile-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px;}
+  .consultant-profile-card{background:#fff;border:1px solid var(--border);border-radius:16px;box-shadow:0 7px 20px rgba(15,23,42,.08);overflow:hidden;}
+  .consultant-profile-card-head{height:42px;padding:0 18px;display:flex;align-items:center;gap:9px;background:linear-gradient(90deg,#eef9fd,#f7fafc);border-bottom:1px solid #e7edf3;color:#155fb8;font-weight:700;font-size:14px;}
+  .consultant-profile-card-head svg{width:17px;height:17px;color:#1674d1;}
+  .consultant-profile-body{padding:18px 20px;}
+  .profile-row{display:grid;grid-template-columns:190px 1fr;gap:14px;padding:10px 0;border-bottom:1px solid #edf1f5;font-size:13px;align-items:center;}
+  .profile-row:last-child{border-bottom:0;}
+  .profile-label{color:#7b8490;}
+  .profile-value{color:#26313d;font-weight:500;}
+  .profile-status{display:inline-flex;align-items:center;padding:3px 9px;border-radius:999px;background:#1f9d61;color:#fff;font-size:11px;font-weight:700;}
+  .profile-avatar-card{display:flex;align-items:center;gap:16px;margin-bottom:18px;padding:16px 18px;background:#fff;border:1px solid var(--border);border-radius:16px;box-shadow:0 7px 20px rgba(15,23,42,.06);}
+  .profile-avatar-card img{width:64px;height:64px;border-radius:50%;object-fit:cover;border:3px solid #e8efff;}
+  .profile-avatar-name{font-size:17px;font-weight:800;color:var(--ink);}
+  .profile-avatar-role{margin-top:3px;color:var(--ink-soft);font-size:12px;}
+  .profile-back-btn{margin-top:18px;border:1px solid #cbd5e1;background:#fff;border-radius:9px;padding:9px 15px;color:#2563a8;font-weight:600;cursor:pointer;}
+  .profile-back-btn:hover{background:#f5f9ff;}
+  @media(max-width:760px){
+    .consultant-profile-section{padding:20px 14px 40px;}
+    .consultant-profile-grid{grid-template-columns:1fr;}
+    .profile-row{grid-template-columns:125px 1fr;}
+  }
 </style>
 </head>
 <body>
@@ -899,7 +926,7 @@
           <div class="tb-dropdown-role">Consultant Ophthalmologist</div>
         </div>
         <div class="tb-dropdown-menu">
-          <div class="tb-dropdown-item">
+          <div class="tb-dropdown-item" role="button" tabindex="0" onclick="showSection('profile');closeProfileMenu(event);" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();showSection('profile');closeProfileMenu(event);}">
             <svg aria-hidden="true" focusable="false" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 21v-2a4 4 0 00-4-4H8a4 4 0 00-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
             My Profile
           </div>
@@ -1654,6 +1681,60 @@
 
 </div>
 
+
+<div id="consultantProfileSection" class="consultant-profile-section">
+  <div class="consultant-profile-wrap">
+    <div class="profile-avatar-card">
+      <img src="" id="consultantProfileAvatar" alt="Prof. Dr. Mohammad Ali Ayaz Sadiq">
+      <div>
+        <div class="profile-avatar-name">Prof. Dr. M. A. Ayaz Sadiq</div>
+        <div class="profile-avatar-role">Consultant Ophthalmologist</div>
+      </div>
+    </div>
+
+    <h2 class="consultant-profile-title">My Profile</h2>
+    <p class="consultant-profile-subtitle">Consultant account information and access details</p>
+
+    <div class="consultant-profile-grid">
+      <div class="consultant-profile-card">
+        <div class="consultant-profile-card-head">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/>
+            <circle cx="12" cy="7" r="4"/>
+          </svg>
+          Personal Information
+        </div>
+        <div class="consultant-profile-body">
+          <div class="profile-row"><div class="profile-label">Name</div><div class="profile-value">Prof. Dr. M. A. Ayaz Sadiq</div></div>
+          <div class="profile-row"><div class="profile-label">Email</div><div class="profile-value">Not provided</div></div>
+          <div class="profile-row"><div class="profile-label">Employee ID</div><div class="profile-value">Not provided</div></div>
+          <div class="profile-row"><div class="profile-label">Phone</div><div class="profile-value">Not provided</div></div>
+        </div>
+      </div>
+
+      <div class="consultant-profile-card">
+        <div class="consultant-profile-card-head">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M12 2l7 4v6c0 5-3.5 8.5-7 10-3.5-1.5-7-5-7-10V6l7-4z"/>
+            <path d="M9 12l2 2 4-4"/>
+          </svg>
+          Access
+        </div>
+        <div class="consultant-profile-body">
+          <div class="profile-row"><div class="profile-label">Role</div><div class="profile-value">Consultant</div></div>
+          <div class="profile-row"><div class="profile-label">Hospital</div><div class="profile-value">Sardar Trust Eye Hospital</div></div>
+          <div class="profile-row"><div class="profile-label">Status</div><div class="profile-value"><span class="profile-status">Active</span></div></div>
+          <div class="profile-row"><div class="profile-label">Member Since</div><div class="profile-value">Not provided</div></div>
+        </div>
+      </div>
+    </div>
+
+    <button class="profile-back-btn" type="button" onclick="showSection('overview')">← Back to Dashboard</button>
+  </div>
+</div>
+
+>
+
 <div class="toast-stack" id="toastStack" aria-live="polite" aria-atomic="true"></div>
 <div class="modal-backdrop" id="patientModalBackdrop" role="dialog" aria-modal="true" aria-labelledby="patientModalTitle" onclick="if(event.target===this)closePatientModal()">
   <div class="patient-modal">
@@ -1709,15 +1790,18 @@
     const diagnostics = document.getElementById('diagnosticsSection');
     const clinicalVisit = document.getElementById('clinicalVisitSection');
     const diagnosticVisit = document.getElementById('diagnosticVisitSection');
+    const profile = document.getElementById('consultantProfileSection');
     const page = section === 'patients' ? 'patients' :
       (section === 'diagnostics' ? 'diagnostics' :
       (section === 'clinicalVisit' ? 'clinicalVisit' :
-      (section === 'diagnosticVisit' ? 'diagnosticVisit' : 'overview')));
+      (section === 'diagnosticVisit' ? 'diagnosticVisit' :
+      (section === 'profile' ? 'profile' : 'overview'))));
     if (overview) overview.style.display = page === 'overview' ? '' : 'none';
     if (patients) patients.style.display = page === 'patients' ? '' : 'none';
     if (diagnostics) diagnostics.style.display = page === 'diagnostics' ? 'block' : 'none';
     if (clinicalVisit) clinicalVisit.style.display = page === 'clinicalVisit' ? 'block' : 'none';
     if (diagnosticVisit) diagnosticVisit.style.display = page === 'diagnosticVisit' ? 'block' : 'none';
+    if (profile) profile.style.display = page === 'profile' ? 'block' : 'none';
 
     [['navDashboard','navDashboardMobile','overview'],['navPatientInfo','navPatientInfoMobile','patients'],['navDiagnostics','navDiagnosticsMobile','diagnostics']].forEach(([deskId,mobId,target])=>{
       [deskId,mobId].forEach(id=>{
@@ -1744,6 +1828,18 @@
     document.getElementById('tbDropdown').classList.toggle('open', open);
     profile.setAttribute('aria-expanded', open);
   }
+  function closeProfileMenu(e){
+    e?.stopPropagation();
+    document.getElementById('tbProfile')?.classList.remove('open');
+    document.getElementById('tbDropdown')?.classList.remove('open');
+    document.getElementById('tbProfile')?.setAttribute('aria-expanded','false');
+  }
+  document.addEventListener('DOMContentLoaded', function(){
+    const source = document.querySelector('#tbProfile .tb-profile-avatar img');
+    const target = document.getElementById('consultantProfileAvatar');
+    if(source && target) target.src = source.src;
+  });
+
   document.addEventListener('click', function(){
     document.getElementById('tbProfile')?.classList.remove('open');
     document.getElementById('tbDropdown')?.classList.remove('open');
