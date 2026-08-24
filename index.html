@@ -697,6 +697,118 @@
     .posterior-grid{grid-template-columns:1fr 1fr}.slit-items{grid-template-columns:1fr 1fr}
   }
 
+
+  /* ===================== DIAGNOSTIC VISIT WORKSPACE ===================== */
+  .diagnostic-visit-section{display:none;min-height:calc(100vh - 68px);background:#efefef;}
+  .diagnostic-visit-shell{
+    width:min(930px,calc(100% - 28px));margin:0 auto;padding:26px 0 40px;
+  }
+  .dv-card{
+    background:#fff;border-radius:10px;box-shadow:0 2px 12px rgba(0,0,0,.10);
+    overflow:hidden;border:1px solid #e5e7eb;
+  }
+  .dv-topbar{
+    display:grid;grid-template-columns:1fr 1fr auto;gap:10px;align-items:center;
+    padding:14px 24px;background:#fff;
+  }
+  .dv-top-field{display:flex;align-items:center;gap:8px;min-width:0;}
+  .dv-top-field label{font-size:12px;font-weight:800;color:#111827;white-space:nowrap;}
+  .dv-input{
+    height:26px;border:1px solid #cbd5e1;border-radius:4px;background:#fff;
+    padding:0 8px;font-size:11px;color:#334155;min-width:0;
+  }
+  .dv-mrn{width:150px}.dv-visit{width:80px}
+  .dv-saved{
+    height:28px;border:1px solid #9aa4b1;border-radius:4px;background:#fff;
+    color:#475569;font-size:11px;font-weight:700;padding:0 10px;cursor:pointer;
+  }
+  .dv-accordion{
+    border-top:1px solid #e5e7eb;
+  }
+  .dv-acc-head{
+    height:31px;padding:0 12px;display:flex;align-items:center;justify-content:space-between;
+    background:#f7f7f7;color:#111827;font-size:12px;cursor:pointer;user-select:none;
+  }
+  .dv-acc-head:hover{background:#f1f5f9}
+  .dv-acc-chevron{font-size:15px;color:#64748b;transition:transform .15s}
+  .dv-accordion.closed .dv-acc-chevron{transform:rotate(-90deg)}
+  .dv-acc-body{padding:15px 12px 18px;background:#fff}
+  .dv-accordion.closed .dv-acc-body{display:none}
+  .dv-patient-grid{
+    display:grid;grid-template-columns:1.2fr 1.2fr 1fr 1.3fr;gap:12px;align-items:end;
+    margin-bottom:10px;
+  }
+  .dv-field label{display:block;font-size:11px;color:#475569;margin-bottom:4px}
+  .dv-field input{width:100%;height:26px;border:1px solid #cbd5e1;border-radius:4px;padding:0 8px;font-size:11px}
+  .dv-radio-row{display:flex;align-items:center;gap:12px;height:26px}
+  .dv-radio-row label{margin:0;font-size:11px;color:#64748b;display:flex;align-items:center;gap:4px}
+  .dv-age{display:grid;grid-template-columns:44px 1fr 44px 1fr;gap:5px;align-items:center}
+  .dv-age span{font-size:11px;color:#64748b}
+  .dv-section-title{font-size:17px;font-weight:800;color:#111827;margin:9px 0 6px}
+  .dv-layout{
+    display:grid;grid-template-columns:345px minmax(260px,1fr);gap:20px;align-items:stretch;
+  }
+  .dv-scan-block{min-width:0}
+  .dv-select{
+    width:100%;height:26px;border:1px solid #cbd5e1;border-radius:3px;background:#fff;
+    font-size:11px;color:#334155;padding:0 7px;
+  }
+  .dv-eye-table{
+    margin-top:7px;border-collapse:collapse;width:100%;table-layout:fixed;font-size:10px;
+  }
+  .dv-eye-table th{background:#b8cce7;color:#17324f;font-weight:800;height:22px;border:1px solid #e5e7eb}
+  .dv-eye-table td{border:1px solid #e5e7eb;text-align:center;height:32px;background:#edf2f7}
+  .dv-eye-table .dv-eye-label{font-size:9px;color:#334155;font-weight:600}
+  .dv-plus{
+    width:98%;height:30px;border:1px solid #91a9d0;border-radius:3px;
+    background:linear-gradient(#7e99c2,#536e9e);color:#fff;font-size:13px;font-weight:800;cursor:pointer;
+  }
+  .dv-swap{
+    border:0;background:transparent;color:#8fa2bb;font-size:11px;cursor:pointer;padding:0;
+  }
+  .dv-symptoms{
+    border:1px solid #0872ff;border-radius:4px;min-height:340px;padding:12px;
+    color:#111827;font-size:12px;font-weight:800;background:#fff;
+  }
+  .dv-dim-grid{display:grid;grid-template-columns:205px 1fr;gap:8px 14px;align-items:center;margin-top:13px}
+  .dv-dim-label{font-size:11px;color:#0f3d72}
+  .dv-dim-input{height:50px;width:100%;border:1px solid #cbd5e1;border-radius:4px;padding:8px;resize:none}
+  .dv-media-row{
+    display:grid;grid-template-columns:205px 200px 1fr;gap:14px;align-items:center;margin-top:12px
+  }
+  .dv-media-title{font-size:16px;font-weight:800;color:#111827}
+  .dv-file{font-size:11px}
+  .dv-category{height:27px;border:1px solid #cbd5e1;border-radius:3px;font-size:11px;padding:0 7px}
+  .dv-video-row{display:grid;grid-template-columns:110px 270px 80px;gap:8px;align-items:center;margin-top:86px}
+  .dv-video-row strong{font-size:16px}
+  .dv-view-btn{height:27px;border:0;border-radius:3px;background:#6b7785;color:#fff;font-size:11px;font-weight:700;cursor:pointer}
+  .dv-conclusion{margin-top:15px}
+  .dv-conclusion label{display:block;font-size:12px;font-weight:800;color:#111827;margin-bottom:6px}
+  .dv-conclusion textarea{width:100%;height:68px;border:1px solid #cbd5e1;border-radius:4px;resize:vertical;padding:8px}
+  .dv-draft{
+    width:100%;height:30px;border:0;border-radius:3px;background:#3f7fc2;color:#fff;
+    font-size:12px;font-weight:800;cursor:pointer;margin-top:13px;
+  }
+  .dv-bottom-note{font-size:12px;color:#ef4444;margin-top:10px}
+  .dv-checkout{
+    height:27px;border:1px solid #cbd5e1;border-radius:4px;background:#eee;color:#475569;
+    font-size:11px;font-weight:700;padding:0 10px;margin-left:5px;cursor:pointer
+  }
+  @media(max-width:800px){
+    .diagnostic-visit-shell{width:calc(100% - 18px)}
+    .dv-topbar{grid-template-columns:1fr 1fr}.dv-saved{grid-column:1/-1;justify-self:end}
+    .dv-patient-grid{grid-template-columns:1fr 1fr}
+    .dv-layout{grid-template-columns:1fr}
+    .dv-symptoms{min-height:220px}
+    .dv-media-row{grid-template-columns:1fr 1fr}.dv-video-row{margin-top:30px}
+  }
+  @media(max-width:520px){
+    .dv-patient-grid{grid-template-columns:1fr}.dv-layout{gap:12px}
+    .dv-media-row,.dv-video-row,.dv-dim-grid{grid-template-columns:1fr}
+    .dv-topbar{grid-template-columns:1fr}
+    .dv-saved{grid-column:auto;justify-self:start}
+  }
+
   .diagnostics-page{display:none;}
   .diagnostics-tabs{display:flex;gap:28px;border-bottom:1px solid var(--line);margin-bottom:18px;}
   .diagnostics-tab{padding:11px 2px;font-size:14px;font-weight:600;color:var(--ink-faint);border-bottom:2px solid transparent;}
@@ -750,7 +862,7 @@
         <svg aria-hidden="true" focusable="false" class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M6 9l6 6 6-6"/></svg>
         <div class="nv-submenu" id="visitsSubmenu" role="menu">
           <div class="nv-subitem" role="menuitem" tabindex="0" onclick="showSection('clinicalVisit'); closeVisitsMenus(event)">Clinical Visit</div>
-          <div class="nv-subitem" role="menuitem" tabindex="0">Diagnostic Visit</div>
+          <div class="nv-subitem" role="menuitem" tabindex="0" onclick="showSection('diagnosticVisit'); closeVisitsMenus(event)">Diagnostic Visit</div>
           <div class="nv-subitem" role="menuitem" tabindex="0">Surgical Note</div>
         </div>
       </div>
@@ -831,7 +943,7 @@
   </div>
   <div class="nv-submenu" id="visitsSubmenuMobile" role="menu">
     <div class="nv-subitem" role="menuitem" tabindex="0" onclick="showSection('clinicalVisit'); closeVisitsMenus(event)">Clinical Visit</div>
-    <div class="nv-subitem" role="menuitem" tabindex="0">Diagnostic Visit</div>
+    <div class="nv-subitem" role="menuitem" tabindex="0" onclick="showSection('diagnosticVisit'); closeVisitsMenus(event)">Diagnostic Visit</div>
     <div class="nv-subitem" role="menuitem" tabindex="0">Surgical Note</div>
   </div>
   <div class="nv-item" id="navDiagnosticsMobile" role="button" tabindex="0" onclick="showSection('diagnostics')" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();showSection('diagnostics');}">
@@ -1318,6 +1430,136 @@
   </div>
 </div>
 
+
+<div id="diagnosticVisitSection" class="diagnostic-visit-section">
+  <div class="diagnostic-visit-shell">
+    <div class="dv-card">
+      <div class="dv-topbar">
+        <div class="dv-top-field">
+          <label for="dvMrn">MRN:</label>
+          <input id="dvMrn" class="dv-input dv-mrn" placeholder="Enter MRN & press Enter">
+        </div>
+        <div class="dv-top-field">
+          <label for="dvVisit">Visit:</label>
+          <input id="dvVisit" class="dv-input dv-visit">
+        </div>
+        <button type="button" class="dv-saved" onclick="showToast('Saved visits opened','info')">Saved visits</button>
+      </div>
+
+      <section class="dv-accordion" id="dvBscanAccordion">
+        <div class="dv-acc-head" onclick="toggleDiagnosticAccordion('dvBscanAccordion')">
+          <span>B-Scan Ultrasound report</span><span class="dv-acc-chevron">⌄</span>
+        </div>
+        <div class="dv-acc-body">
+          <div class="dv-patient-grid">
+            <div class="dv-field"><label>Patient's Name</label><input id="dvPatientName"></div>
+            <div class="dv-field"><label>Referred By</label><input id="dvReferredBy"></div>
+            <div class="dv-field"><label>Gender</label>
+              <div class="dv-radio-row">
+                <label><input type="radio" name="dvGender"> Male</label>
+                <label><input type="radio" name="dvGender"> Female</label>
+              </div>
+            </div>
+            <div class="dv-field"><label>Age</label>
+              <div class="dv-age">
+                <input><span>years</span><input><span>months</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="dv-layout">
+            <div class="dv-scan-block">
+              <h3 class="dv-section-title">Transverse Scan</h3>
+              <select class="dv-select"><option>Superior Quadrant</option><option>Inferior Quadrant</option><option>Nasal Quadrant</option><option>Temporal Quadrant</option></select>
+              <table class="dv-eye-table">
+                <thead><tr><th>OD</th><th></th><th>OS</th></tr></thead>
+                <tbody>
+                  <tr><td><button class="dv-plus" type="button" onclick="showToast('Vitreous OD marked','success')">+</button></td><td class="dv-eye-label">Vitreous<br><button class="dv-swap" type="button">⇄</button></td><td><button class="dv-plus" type="button">+</button></td></tr>
+                  <tr><td><button class="dv-plus" type="button">+</button></td><td class="dv-eye-label">Retina<br><button class="dv-swap" type="button">⇄</button></td><td><button class="dv-plus" type="button">+</button></td></tr>
+                  <tr><td><button class="dv-plus" type="button">+</button></td><td class="dv-eye-label">Choroid<br><button class="dv-swap" type="button">⇄</button></td><td><button class="dv-plus" type="button">+</button></td></tr>
+                  <tr><td><button class="dv-plus" type="button">+</button></td><td class="dv-eye-label">Sclera<br><button class="dv-swap" type="button">⇄</button></td><td><button class="dv-plus" type="button">+</button></td></tr>
+                </tbody>
+              </table>
+
+              <h3 class="dv-section-title" style="margin-top:8px">Axial Scan</h3>
+              <select class="dv-select"><option>Horizontal</option><option>Vertical</option></select>
+              <table class="dv-eye-table">
+                <thead><tr><th>OD</th><th></th><th>OS</th></tr></thead>
+                <tbody>
+                  <tr><td><button class="dv-plus" type="button">+</button></td><td class="dv-eye-label">Lens<br><button class="dv-swap" type="button">⇄</button></td><td><button class="dv-plus" type="button">+</button></td></tr>
+                  <tr><td><button class="dv-plus" type="button">+</button></td><td class="dv-eye-label">Optic Nerve<br><button class="dv-swap" type="button">⇄</button></td><td><button class="dv-plus" type="button">+</button></td></tr>
+                  <tr><td><button class="dv-plus" type="button">+</button></td><td class="dv-eye-label">Macula<br><button class="dv-swap" type="button">⇄</button></td><td><button class="dv-plus" type="button">+</button></td></tr>
+                </tbody>
+              </table>
+            </div>
+
+            <div class="dv-symptoms" contenteditable="true" aria-label="Symptoms">Symptoms</div>
+          </div>
+
+          <div class="dv-section-title" style="margin-top:20px">Longitudinal Scan</div>
+          <div class="dv-dim-grid">
+            <div class="dv-dim-label">Vertical dimension of Lesion</div>
+            <textarea class="dv-dim-input"></textarea>
+            <div class="dv-dim-label">Horizontal dimension of Lesion</div>
+            <textarea class="dv-dim-input"></textarea>
+          </div>
+
+          <div class="dv-media-row">
+            <div class="dv-media-title">Bscan Images</div>
+            <input class="dv-file" type="file" multiple accept="image/*">
+            <select class="dv-category"><option>-- Select --</option><option>B-Scan</option><option>Transverse</option><option>Axial</option><option>Longitudinal</option></select>
+          </div>
+
+          <div class="dv-video-row">
+            <strong>Select Video</strong>
+            <input class="dv-file" type="file" accept="video/*">
+            <button class="dv-view-btn" type="button" onclick="showToast('Video preview is ready for backend integration','info')">View File</button>
+          </div>
+
+          <div class="dv-conclusion">
+            <label>Conclusion:</label>
+            <textarea id="dvConclusion"></textarea>
+          </div>
+          <button class="dv-draft" type="button" onclick="showToast('Diagnostic visit saved as Draft','success')">Draft</button>
+        </div>
+      </section>
+
+      <div class="dv-accordion closed" id="dvOctAccordion">
+        <div class="dv-acc-head" onclick="toggleDiagnosticAccordion('dvOctAccordion')"><span>OCT-Macula Report</span><span class="dv-acc-chevron">⌄</span></div>
+        <div class="dv-acc-body"><textarea class="dv-dim-input" style="height:80px" placeholder="OCT-Macula report..."></textarea></div>
+      </div>
+      <div class="dv-accordion closed" id="dvFfaAccordion">
+        <div class="dv-acc-head" onclick="toggleDiagnosticAccordion('dvFfaAccordion')"><span>Fundus Fluorescein Angiography</span><span class="dv-acc-chevron">⌄</span></div>
+        <div class="dv-acc-body"><textarea class="dv-dim-input" style="height:80px" placeholder="Fundus fluorescein angiography report..."></textarea></div>
+      </div>
+      <div class="dv-accordion closed" id="dvFundusAccordion">
+        <div class="dv-acc-head" onclick="toggleDiagnosticAccordion('dvFundusAccordion')"><span>Fundus Photographs</span><span class="dv-acc-chevron">⌄</span></div>
+        <div class="dv-acc-body"><input type="file" class="dv-file" accept="image/*" multiple></div>
+      </div>
+      <div class="dv-accordion closed" id="dvVisualFieldsAccordion">
+        <div class="dv-acc-head" onclick="toggleDiagnosticAccordion('dvVisualFieldsAccordion')"><span>Visual Fields Result</span><span class="dv-acc-chevron">⌄</span></div>
+        <div class="dv-acc-body"><textarea class="dv-dim-input" style="height:80px" placeholder="Visual fields result..."></textarea></div>
+      </div>
+      <div class="dv-accordion closed" id="dvOctRnlAccordion">
+        <div class="dv-acc-head" onclick="toggleDiagnosticAccordion('dvOctRnlAccordion')"><span>OCT Retinal Nerve Fibre Layer + Ganglion Cell Count (GCC)</span><span class="dv-acc-chevron">⌄</span></div>
+        <div class="dv-acc-body"><textarea class="dv-dim-input" style="height:80px" placeholder="RNFL + GCC report..."></textarea></div>
+      </div>
+      <div class="dv-accordion closed" id="dvBiometryAccordion">
+        <div class="dv-acc-head" onclick="toggleDiagnosticAccordion('dvBiometryAccordion')"><span>Biometry for IOL Calculation</span><span class="dv-acc-chevron">⌄</span></div>
+        <div class="dv-acc-body"><textarea class="dv-dim-input" style="height:80px" placeholder="Biometry / IOL calculation..."></textarea></div>
+      </div>
+      <div class="dv-accordion closed" id="dvOtherAccordion">
+        <div class="dv-acc-head" onclick="toggleDiagnosticAccordion('dvOtherAccordion')"><span>Other Medical Reports</span><span class="dv-acc-chevron">⌄</span></div>
+        <div class="dv-acc-body"><textarea class="dv-dim-input" style="height:80px" placeholder="Other medical reports..."></textarea></div>
+      </div>
+
+      <div class="dv-bottom-note">* Click this button to check out Patient Visit.
+        <button class="dv-checkout" type="button" onclick="showToast('Patient visit checkout opened','success')">Check out</button>
+      </div>
+    </div>
+  </div>
+</div>
+
 <div id="diagnosticsSection" class="diagnostics-page">
   <div class="page-head">
     <div>
@@ -1449,18 +1691,33 @@
     }
   });
 
+  function toggleDiagnosticAccordion(id){
+    document.getElementById(id)?.classList.toggle('closed');
+  }
+
+  document.getElementById('dvMrn')?.addEventListener('keydown', function(e){
+    if(e.key === 'Enter'){
+      const value=this.value.trim();
+      if(value) showToast('Loading diagnostic patient MRN: '+value,'info');
+      else showToast('Please enter an MRN','error');
+    }
+  });
+
   function showSection(section){
     const overview = document.getElementById('overviewSection');
     const patients = document.getElementById('patientsSection');
     const diagnostics = document.getElementById('diagnosticsSection');
     const clinicalVisit = document.getElementById('clinicalVisitSection');
+    const diagnosticVisit = document.getElementById('diagnosticVisitSection');
     const page = section === 'patients' ? 'patients' :
       (section === 'diagnostics' ? 'diagnostics' :
-      (section === 'clinicalVisit' ? 'clinicalVisit' : 'overview'));
+      (section === 'clinicalVisit' ? 'clinicalVisit' :
+      (section === 'diagnosticVisit' ? 'diagnosticVisit' : 'overview')));
     if (overview) overview.style.display = page === 'overview' ? '' : 'none';
     if (patients) patients.style.display = page === 'patients' ? '' : 'none';
     if (diagnostics) diagnostics.style.display = page === 'diagnostics' ? 'block' : 'none';
     if (clinicalVisit) clinicalVisit.style.display = page === 'clinicalVisit' ? 'block' : 'none';
+    if (diagnosticVisit) diagnosticVisit.style.display = page === 'diagnosticVisit' ? 'block' : 'none';
 
     [['navDashboard','navDashboardMobile','overview'],['navPatientInfo','navPatientInfoMobile','patients'],['navDiagnostics','navDiagnosticsMobile','diagnostics']].forEach(([deskId,mobId,target])=>{
       [deskId,mobId].forEach(id=>{
@@ -1470,6 +1727,11 @@
         el.classList.toggle('active',active);
         if(active)el.setAttribute('aria-current','page'); else el.removeAttribute('aria-current');
       });
+    });
+    const visitActive = page === 'clinicalVisit' || page === 'diagnosticVisit';
+    ['visitsToggle','visitsToggleMobile'].forEach(id=>{
+      const el=document.getElementById(id);
+      if(el) el.classList.toggle('active',visitActive);
     });
     if(document.getElementById('mobileMenu')?.classList.contains('open')) toggleMobileMenu();
     window.scrollTo({top:0,behavior:'smooth'});
