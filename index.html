@@ -494,6 +494,209 @@
     .patient-mrn-btn{width:100%;}
   }
 
+
+  /* Clinical Visit workspace */
+  .clinical-visit-section{
+    display:none;
+    position:relative;
+    min-height:calc(100vh - 58px);
+    background:#fff;
+  }
+  .clinical-shell{
+    display:grid;
+    grid-template-columns:280px minmax(0,1fr);
+    min-height:calc(100vh - 58px);
+  }
+  .clinical-sidebar{
+    background:#fff;
+    border-right:1px solid #D9DEE7;
+    position:sticky;
+    top:0;
+    height:calc(100vh - 58px);
+    overflow:auto;
+  }
+  .snapshot-title{
+    height:34px;
+    display:flex;
+    align-items:center;
+    gap:8px;
+    padding:0 14px;
+    background:#1268EA;
+    color:#fff;
+    font-size:13px;
+    font-weight:700;
+    letter-spacing:.2px;
+  }
+  .snapshot-body{padding:12px 14px;}
+  .snapshot-fields{
+    display:grid;
+    grid-template-columns:1fr 73px;
+    gap:9px;
+    align-items:end;
+  }
+  .snapshot-label{
+    display:block;
+    margin-bottom:5px;
+    color:#075ED8;
+    font-size:11px;
+    font-weight:700;
+    text-transform:uppercase;
+  }
+  .snapshot-input{
+    width:100%;
+    height:38px;
+    border:1px solid #CBD5E1;
+    border-radius:5px;
+    padding:0 12px;
+    font-size:12px;
+    box-sizing:border-box;
+  }
+  .snapshot-visit{
+    width:100%;
+    height:38px;
+    border:1px solid #CBD5E1;
+    border-radius:5px;
+    background:#F1F3F6;
+  }
+  .snapshot-empty{
+    margin-top:38px;
+    padding:0 18px;
+    text-align:center;
+    color:#666;
+    font-size:12px;
+    line-height:1.45;
+  }
+  .snapshot-avatar{
+    width:38px;height:38px;border-radius:50%;
+    margin:0 auto 12px;
+    background:#C8C8C8;
+    display:flex;align-items:center;justify-content:center;
+    color:#fff;font-size:20px;
+  }
+  .clinical-main{
+    min-width:0;
+    padding:15px 20px 35px;
+    background:#fff;
+  }
+  .clinical-toolbar{
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    gap:15px;
+    border-bottom:2px solid #1468E8;
+    min-height:39px;
+  }
+  .clinical-tabs{display:flex;align-items:center;gap:0;}
+  .clinical-tab{
+    border:0;background:transparent;color:#005AD8;
+    padding:8px 13px;font-size:13px;cursor:pointer;
+  }
+  .clinical-tab.active{background:#116BEF;color:#fff;font-weight:700;border-radius:5px 5px 0 0;}
+  .clinical-actions{display:flex;gap:7px;}
+  .clinical-btn{
+    border:0;border-radius:5px;padding:7px 17px;
+    color:#fff;font-weight:700;font-size:12px;cursor:pointer;
+  }
+  .btn-save{background:#6F7A84}.btn-refer{background:#10B9DA}.btn-checkout{background:#168C56}
+  .clinical-content{max-width:100%;padding-top:10px;}
+  .clinical-section{margin-bottom:27px;}
+  .clinical-heading{
+    color:#005EDB;font-size:15px;font-weight:800;
+    padding:0 0 8px;border-bottom:1px solid #D6DEE9;
+    margin:0 0 12px;
+  }
+  .clinical-row{display:flex;flex-wrap:wrap;gap:9px;align-items:center;}
+  .clinical-label{font-size:12px;font-weight:700;color:#334155;}
+  .clinical-input,.clinical-select,.clinical-textarea{
+    height:32px;border:1px solid #C9D5E5;border-radius:5px;
+    padding:0 9px;background:#fff;color:#334155;font-size:12px;
+    box-sizing:border-box;
+  }
+  .clinical-textarea{height:58px;padding-top:8px;resize:vertical;}
+  .history-grid{
+    display:grid;
+    grid-template-columns:repeat(7,minmax(100px,1fr));
+    border-top:1px solid #E4E8EF;
+    margin-top:8px;
+  }
+  .history-cell{
+    min-height:82px;padding:10px 8px;border-right:1px solid #E4E8EF;
+  }
+  .history-cell:last-child{border-right:0}
+  .history-title{font-size:12px;color:#0F3A69;margin-bottom:9px;}
+  .exam-box{
+    border:1px solid #D8E0EA;border-radius:5px;background:#fff;
+  }
+  .exam-grid{
+    display:grid;grid-template-columns:190px minmax(0,1fr);
+    gap:10px;align-items:start;
+  }
+  .vision-panel{
+    border:1px solid #D6DEE8;border-radius:5px;overflow:hidden;
+  }
+  .vision-panel-head{
+    display:grid;grid-template-columns:1fr 1fr;
+    background:#F3F5F8;color:#31506F;font-size:11px;font-weight:800;
+    text-align:center;padding:5px;
+  }
+  .vision-row{
+    display:grid;grid-template-columns:50px 1fr 1fr;
+    border-top:1px solid #E3E7ED;align-items:center;
+  }
+  .vision-row span{font-size:11px;padding-left:7px;color:#334155}
+  .vision-row select{width:100%;height:26px;border:0;border-left:1px solid #E3E7ED;font-size:11px;}
+  .refraction-table{width:100%;border-collapse:collapse;font-size:11px;}
+  .refraction-table th{background:#075B8B;color:#fff;padding:7px 4px;}
+  .refraction-table td,.refraction-table th{border:1px solid #D7DFE8;text-align:center;}
+  .refraction-table td{height:27px;}
+  .refraction-table select,.refraction-table input{
+    width:100%;height:25px;border:0;background:#fff;font-size:11px;text-align:center;
+  }
+  .two-col{display:grid;grid-template-columns:1fr 1fr;gap:14px;}
+  .pupil-grid{display:grid;grid-template-columns:1.1fr 1fr 1fr 1.4fr;gap:14px;align-items:start;}
+  .mini-label{font-size:11px;font-weight:700;color:#334155;display:block;margin-bottom:5px;}
+  .reactivity{border-top:2px solid #1F2937;}
+  .reactivity-row{display:grid;grid-template-columns:70px 1fr 1fr;border-bottom:1px solid #D9E0E8;}
+  .reactivity-row span{font-size:11px;padding:7px 5px}.reactivity-row select{height:30px;border:0;border-left:1px solid #D9E0E8;font-size:11px;}
+  .quick-fill{font-size:11px;color:#64748B;}
+  .quick-btn{
+    display:block;width:100%;margin-bottom:6px;padding:6px 8px;
+    border:1px solid #0B6BFF;background:#fff;color:#065EDB;border-radius:4px;font-size:11px;text-align:left;cursor:pointer;
+  }
+  .slit-grid{
+    display:grid;grid-template-columns:560px minmax(220px,1fr);gap:20px;
+  }
+  .slit-items{
+    display:grid;grid-template-columns:repeat(3,1fr);gap:5px;
+  }
+  .slit-item{border:1px solid #D9E2ED;border-radius:4px;padding:6px 7px;}
+  .slit-name{font-size:11px;color:#334155;margin-bottom:6px;}
+  .eye-controls{display:flex;align-items:center;justify-content:space-between;font-size:10px;color:#64748B;}
+  .plus{
+    width:22px;height:22px;border:1px solid #8FB0DF;border-radius:3px;background:#B9D0F2;color:#0D5BB8;font-weight:800;cursor:pointer;
+  }
+  .signs-box{height:235px;border:1px solid #0E70FF;border-radius:5px;padding:12px;font-size:11px;font-weight:700;}
+  .posterior-grid{display:grid;grid-template-columns:145px 1fr 1fr 1fr;gap:9px;align-items:end;}
+  .posterior-cards{display:grid;grid-template-columns:repeat(3,1fr);gap:5px;margin-top:10px;max-width:560px;}
+  .posterior-card{border:1px solid #D9E2ED;border-radius:4px;padding:6px;}
+  .clinical-note{font-size:11px;color:#64748B;line-height:1.35;}
+  .outline-btn{
+    background:#fff;color:#075ED8;border:1px solid #0A70FF;border-radius:4px;
+    padding:6px 10px;font-size:11px;font-weight:700;cursor:pointer;
+  }
+  @media(max-width:900px){
+    .clinical-shell{grid-template-columns:220px minmax(0,1fr);}
+    .history-grid{grid-template-columns:repeat(4,1fr);}
+    .slit-grid{grid-template-columns:1fr;}
+    .pupil-grid{grid-template-columns:repeat(2,1fr);}
+  }
+  @media(max-width:650px){
+    .clinical-shell{display:block}.clinical-sidebar{position:relative;height:auto;border-right:0;border-bottom:1px solid #D9DEE7}
+    .clinical-main{padding:10px}.clinical-toolbar{align-items:flex-start;flex-direction:column}.clinical-actions{width:100%}
+    .clinical-actions button{flex:1}.history-grid{grid-template-columns:1fr 1fr}.exam-grid{grid-template-columns:1fr}
+    .posterior-grid{grid-template-columns:1fr 1fr}.slit-items{grid-template-columns:1fr 1fr}
+  }
+
   .diagnostics-page{display:none;}
   .diagnostics-tabs{display:flex;gap:28px;border-bottom:1px solid var(--line);margin-bottom:18px;}
   .diagnostics-tab{padding:11px 2px;font-size:14px;font-weight:600;color:var(--ink-faint);border-bottom:2px solid transparent;}
@@ -546,7 +749,7 @@
         Visits
         <svg aria-hidden="true" focusable="false" class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M6 9l6 6 6-6"/></svg>
         <div class="nv-submenu" id="visitsSubmenu" role="menu">
-          <div class="nv-subitem" role="menuitem" tabindex="0">Clinical Visit</div>
+          <div class="nv-subitem" role="menuitem" tabindex="0" onclick="showSection('clinicalVisit'); closeVisitsMenus(event)">Clinical Visit</div>
           <div class="nv-subitem" role="menuitem" tabindex="0">Diagnostic Visit</div>
           <div class="nv-subitem" role="menuitem" tabindex="0">Surgical Note</div>
         </div>
@@ -627,7 +830,7 @@
     <svg aria-hidden="true" focusable="false" class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M6 9l6 6 6-6"/></svg>
   </div>
   <div class="nv-submenu" id="visitsSubmenuMobile" role="menu">
-    <div class="nv-subitem" role="menuitem" tabindex="0">Clinical Visit</div>
+    <div class="nv-subitem" role="menuitem" tabindex="0" onclick="showSection('clinicalVisit'); closeVisitsMenus(event)">Clinical Visit</div>
     <div class="nv-subitem" role="menuitem" tabindex="0">Diagnostic Visit</div>
     <div class="nv-subitem" role="menuitem" tabindex="0">Surgical Note</div>
   </div>
@@ -929,6 +1132,192 @@
   </div>
 </div>
 
+
+<div id="clinicalVisitSection" class="clinical-visit-section">
+  <div class="clinical-shell">
+    <aside class="clinical-sidebar">
+      <div class="snapshot-title">
+        <span aria-hidden="true">▣</span> Patient Snapshot
+      </div>
+      <div class="snapshot-body">
+        <div class="snapshot-fields">
+          <div>
+            <label class="snapshot-label" for="cvMrn">MRN</label>
+            <input id="cvMrn" class="snapshot-input" placeholder="Enter MRN & press Enter">
+          </div>
+          <div>
+            <label class="snapshot-label">Visit</label>
+            <input class="snapshot-visit" value="" readonly>
+          </div>
+        </div>
+        <div class="snapshot-empty">
+          <div class="snapshot-avatar">●</div>
+          Enter an MRN to load the patient snapshot.
+        </div>
+      </div>
+    </aside>
+
+    <main class="clinical-main">
+      <div class="clinical-toolbar">
+        <div class="clinical-tabs">
+          <button class="clinical-tab active" type="button">Main Exam</button>
+          <button class="clinical-tab" type="button">Expand</button>
+          <button class="clinical-tab" type="button">Strabismus</button>
+          <button class="clinical-tab" type="button">Plan</button>
+        </div>
+        <div class="clinical-actions">
+          <button class="clinical-btn btn-save" type="button" onclick="showToast('Visit saved','success')">▣ Save</button>
+          <button class="clinical-btn btn-refer" type="button" onclick="showToast('Referral action opened','info')">⇱ Refer</button>
+          <button class="clinical-btn btn-checkout" type="button" onclick="showToast('Checkout action opened','success')">↪ Checkout</button>
+        </div>
+      </div>
+
+      <div class="clinical-content">
+        <section class="clinical-section">
+          <h2 class="clinical-heading">Patient History</h2>
+          <div class="clinical-row" style="margin-bottom:9px;">
+            <label class="clinical-label">Followup of</label>
+            <input class="clinical-input" style="width:200px;">
+          </div>
+          <div style="border-top:1px solid #E5E9EF;padding-top:10px;">
+            <div class="clinical-row" style="margin-bottom:8px;">
+              <span class="clinical-label">History of Present Illness</span>
+              <span style="font-size:11px;background:#EEF2F7;border-radius:12px;padding:3px 8px;">Auto</span>
+            </div>
+            <div class="clinical-row">
+              <input class="clinical-input" style="width:220px" placeholder="Chief complaint">
+              <input class="clinical-input" style="width:145px" placeholder="Duration (e.g. 2)">
+              <select class="clinical-select" style="width:90px"><option>Select unit</option><option>Days</option><option>Weeks</option><option>Months</option></select>
+              <select class="clinical-select" style="width:96px"><option>Select onset</option><option>Sudden</option><option>Gradual</option></select>
+              <select class="clinical-select" style="width:132px"><option>Select progression</option><option>Stable</option><option>Progressive</option></select>
+              <input class="clinical-input" style="width:200px" placeholder="Associative complaint">
+              <select class="clinical-select" style="width:140px"><option>Select variability</option><option>Constant</option><option>Intermittent</option></select>
+            </div>
+            <p class="clinical-note" style="margin:10px 10px;">The patient has ___, ___ ___ since ___ associated with ___ and symptoms were ___.</p>
+          </div>
+
+          <div class="history-grid">
+            <div class="history-cell"><div class="history-title">Past Medical History:</div><select class="clinical-select" style="width:100%"><option>Select medical...</option><option>None</option><option>Diabetes</option><option>Hypertension</option></select></div>
+            <div class="history-cell"><div class="history-title">Past Ocular History:</div><select class="clinical-select" style="width:100%"><option>Select ocular...</option><option>None</option><option>Surgery</option><option>Glasses</option></select></div>
+            <div class="history-cell"><div class="history-title">Social History:</div><span class="mini-label">Education</span><select class="clinical-select" style="width:100%;margin-bottom:6px"><option>— Select —</option></select><span class="mini-label">Occupation</span><select class="clinical-select" style="width:100%"><option>— Select —</option></select></div>
+            <div class="history-cell"><div class="history-title">Family History:</div><label class="clinical-note"><input type="checkbox"> Present</label></div>
+            <div class="history-cell"><div class="history-title">Birth History:</div><label class="clinical-note"><input type="checkbox"> Problems with pregnancy, delivery or prenatal period</label></div>
+            <div class="history-cell"><div class="history-title">Allergies:</div><label class="clinical-note"><input type="checkbox"> Present</label></div>
+            <div class="history-cell"><div class="history-title">Medications/Hospital Admission:</div><label class="clinical-note"><input type="checkbox"> Present</label></div>
+          </div>
+        </section>
+
+        <section class="clinical-section">
+          <h2 class="clinical-heading">Visual Function Test</h2>
+          <div class="clinical-row" style="margin-bottom:12px;">
+            <span class="clinical-label">Mental Status:</span><label class="clinical-note"><input type="checkbox"> Alert and cooperative</label>
+            <span class="clinical-label" style="margin-left:30px;">Dynamic Retinoscopy:</span><label class="clinical-note"><input type="checkbox"> Rapid, completed steady OU</label>
+            <span class="clinical-label" style="margin-left:25px;">Visual Acuity:</span>
+            <label class="clinical-note"><input type="radio" name="va"> Sn</label>
+            <label class="clinical-note"><input type="radio" name="va"> PLT</label>
+            <label class="clinical-note"><input type="radio" name="va"> Letters</label>
+            <label class="clinical-note"><input type="radio" name="va"> Symbols</label>
+          </div>
+
+          <div class="exam-grid">
+            <div class="vision-panel">
+              <div class="vision-panel-head"><span>OD</span><span>OS</span></div>
+              <div class="vision-row"><span>V<sub>A</sub></span><select><option>Select</option></select><select><option>Select</option></select></div>
+              <div class="vision-row"><span>Glasses</span><select><option>Select</option></select><select><option>Select</option></select></div>
+              <div class="vision-row"><span>PH</span><select><option>Select</option></select><select><option>Select</option></select></div>
+              <div class="vision-row"><span>N</span><select><option>Select</option></select><select><option>Select</option></select></div>
+              <div class="vision-row"><span>OU</span><input class="clinical-input" style="width:100%;height:26px"><input class="clinical-input" style="width:100%;height:26px"></div>
+            </div>
+
+            <table class="refraction-table">
+              <thead><tr><th></th><th colspan="2">Wearing</th><th colspan="2">Manifest</th><th colspan="2">Cycloplegic</th><th colspan="2">Glasses</th></tr></thead>
+              <tbody>
+                <tr><th>Sphere</th><td>+0.00</td><td>+0.00</td><td>+0.00</td><td>+0.00</td><td>+0.00</td><td>+0.00</td><td>+0.00</td><td>+0.00</td></tr>
+                <tr><th>Cyl</th><td colspan="8"><select><option>Select</option></select></td></tr>
+                <tr><th>Axis</th><td colspan="8"><select><option>Select</option></select></td></tr>
+                <tr><th>V<sub>A</sub></th><td colspan="8"><select><option>Select</option></select></td></tr>
+                <tr><th>Prism</th><td colspan="8"><input></td></tr>
+                <tr><th>ADD</th><td colspan="8"><select><option>Select</option></select></td></tr>
+              </tbody>
+            </table>
+          </div>
+
+          <div class="two-col" style="margin-top:14px;">
+            <div><span class="mini-label">Visual Fields:</span><select class="clinical-select" style="width:275px"><option>Select</option></select></div>
+            <div><span class="mini-label">Colour Vision Test:</span><select class="clinical-select" style="width:210px"><option>Select</option></select></div>
+          </div>
+          <button class="outline-btn" style="margin-top:14px;" type="button">⊞ Amsler Grids</button>
+        </section>
+
+        <section class="clinical-section">
+          <h2 class="clinical-heading">Pupillary Exam</h2>
+          <div class="pupil-grid">
+            <div><span class="mini-label">Accommodation</span><select class="clinical-select" style="width:100%"><option>Select</option></select></div>
+            <div><span class="mini-label">Pupils *</span><div class="clinical-row"><div><span class="mini-label">Size</span><select class="clinical-select"><option>Select</option></select></div><div><span class="mini-label">Shape</span><select class="clinical-select"><option>Select</option></select></div></div></div>
+            <div><span class="mini-label">Reactivity</span><div class="reactivity"><div class="reactivity-row"><span>Direct</span><select><option>Select</option></select><select><option>Select</option></select></div><div class="reactivity-row"><span>Indirect</span><select><option>Select</option></select><select><option>Select</option></select></div><div class="reactivity-row"><span>RAPD</span><select><option>Select</option></select><select><option>Select</option></select></div></div></div>
+            <div><span class="mini-label">Quick fill</span><button class="quick-btn">● Pupils normal (PERRLA)</button><button class="outline-btn" style="width:70px;">♻ Clear</button><p class="quick-fill">Fills Equal, Round, Intact, reactive (Direct/Indirect), RAPP Negative.</p></div>
+          </div>
+        </section>
+
+        <section class="clinical-section">
+          <h2 class="clinical-heading">Slit-Lamp Exam</h2>
+          <div class="clinical-row" style="margin-bottom:12px;">
+            <span class="clinical-label">IntraOcular Pressure</span>
+            <label class="clinical-note"><input type="checkbox"> Attempted, but unable to evaluate</label>
+            <select class="clinical-select" style="margin-left:20px"><option>Tactile</option><option>Tonopen</option><option>Applanation</option></select>
+            <b class="clinical-label">OD</b><select class="clinical-select"><option>Select</option></select>
+            <b class="clinical-label">OS</b><select class="clinical-select"><option>Select</option></select>
+            <b class="clinical-label">OD</b><input class="clinical-input" style="width:66px"><b class="clinical-label">OS</b><input class="clinical-input" style="width:66px">
+          </div>
+          <div class="slit-grid">
+            <div>
+              <div class="slit-items">
+                <div class="slit-item"><div class="slit-name">Lids</div><div class="eye-controls">OD <button class="plus">+</button> ⇄ OS <button class="plus">+</button></div></div>
+                <div class="slit-item"><div class="slit-name">Conjunctiva</div><div class="eye-controls">OD <button class="plus">+</button> ⇄ OS <button class="plus">+</button></div></div>
+                <div class="slit-item"><div class="slit-name">Tear Film</div><div class="eye-controls">OD <button class="plus">+</button> ⇄ OS <button class="plus">+</button></div></div>
+                <div class="slit-item"><div class="slit-name">Cornea</div><div class="eye-controls">OD <button class="plus">+</button> ⇄ OS <button class="plus">+</button></div></div>
+                <div class="slit-item"><div class="slit-name">Anterior Chamber</div><div class="eye-controls">OD <button class="plus">+</button> ⇄ OS <button class="plus">+</button></div></div>
+                <div class="slit-item"><div class="slit-name">Iris</div><div class="eye-controls">OD <button class="plus">+</button> ⇄ OS <button class="plus">+</button></div></div>
+                <div class="slit-item"><div class="slit-name">Lens</div><div class="eye-controls">OD <button class="plus">+</button> ⇄ OS <button class="plus">+</button></div></div>
+                <div class="slit-item"><div class="slit-name">Anterior Vitreous</div><div class="eye-controls">OD <button class="plus">+</button> ⇄ OS <button class="plus">+</button></div></div>
+              </div>
+              <button class="outline-btn" style="margin-top:72px;">✎ Drawings & Images</button>
+            </div>
+            <div class="signs-box">Signs</div>
+          </div>
+        </section>
+
+        <section class="clinical-section">
+          <h2 class="clinical-heading">Glaucoma Assessment</h2>
+          <button class="outline-btn" type="button">⊡ Gonioscopy</button>
+        </section>
+
+        <section class="clinical-section">
+          <h2 class="clinical-heading">Posterior Segment Exam</h2>
+          <div class="posterior-grid">
+            <div><span class="mini-label">Posterior Segment</span><select class="clinical-select" style="width:100%"><option>Undilated</option><option>Dilated</option></select></div>
+            <div><span class="mini-label">OD</span><select class="clinical-select" style="width:100%"><option>no abnormal torsion</option><option>Normal</option></select></div>
+            <div><span class="mini-label">OS</span><select class="clinical-select" style="width:100%"><option>no abnormal torsion</option><option>Normal</option></select></div>
+            <div class="clinical-note">Disc, nerve fiber layer, macula, vessels, and posterior pole normal OU</div>
+          </div>
+          <textarea class="clinical-textarea" style="width:330px;margin-top:9px;" placeholder="Description..."></textarea>
+          <div class="slit-grid" style="margin-top:12px;">
+            <div class="posterior-cards">
+              <div class="posterior-card">Macula<br><button class="plus">+</button></div>
+              <div class="posterior-card">Optic Nerve<br><button class="plus">+</button></div>
+              <div class="posterior-card">Vitreous<br><button class="plus">+</button></div>
+              <div class="posterior-card">Choroid-uveal tissue<br><button class="plus">+</button></div>
+              <div class="posterior-card">Retina<br><button class="plus">+</button></div>
+            </div>
+            <div class="signs-box">Posterior Segment Exam Signs</div>
+          </div>
+          <button class="outline-btn" style="margin-top:9px;">✎ Drawings & Image Upload</button>
+        </section>
+      </div>
+    </main>
+  </div>
+</div>
+
 <div id="diagnosticsSection" class="diagnostics-page">
   <div class="page-head">
     <div>
@@ -1052,14 +1441,26 @@
     empty.classList.toggle('show', !showTable);
   }
 
+  document.getElementById('cvMrn')?.addEventListener('keydown', function(e){
+    if(e.key === 'Enter'){
+      const value = this.value.trim();
+      if(value) showToast('Loading patient MRN: ' + value,'info');
+      else showToast('Please enter an MRN','error');
+    }
+  });
+
   function showSection(section){
     const overview = document.getElementById('overviewSection');
     const patients = document.getElementById('patientsSection');
     const diagnostics = document.getElementById('diagnosticsSection');
-    const page = section === 'patients' ? 'patients' : (section === 'diagnostics' ? 'diagnostics' : 'overview');
+    const clinicalVisit = document.getElementById('clinicalVisitSection');
+    const page = section === 'patients' ? 'patients' :
+      (section === 'diagnostics' ? 'diagnostics' :
+      (section === 'clinicalVisit' ? 'clinicalVisit' : 'overview'));
     if (overview) overview.style.display = page === 'overview' ? '' : 'none';
     if (patients) patients.style.display = page === 'patients' ? '' : 'none';
     if (diagnostics) diagnostics.style.display = page === 'diagnostics' ? 'block' : 'none';
+    if (clinicalVisit) clinicalVisit.style.display = page === 'clinicalVisit' ? 'block' : 'none';
 
     [['navDashboard','navDashboardMobile','overview'],['navPatientInfo','navPatientInfoMobile','patients'],['navDiagnostics','navDiagnosticsMobile','diagnostics']].forEach(([deskId,mobId,target])=>{
       [deskId,mobId].forEach(id=>{
@@ -1114,6 +1515,13 @@
   }
   window.addEventListener('scroll', updateNavbarGlass, { passive:true });
   updateNavbarGlass();
+
+  function closeVisitsMenus(e){
+    e?.stopPropagation();
+    ['visitsToggle','visitsToggleMobile'].forEach(id=>document.getElementById(id)?.classList.remove('open'));
+    ['visitsSubmenu','visitsSubmenuMobile'].forEach(id=>document.getElementById(id)?.classList.remove('open'));
+    ['visitsToggle','visitsToggleMobile'].forEach(id=>document.getElementById(id)?.setAttribute('aria-expanded','false'));
+  }
 
   function toggleSubmenu(e, isMobile){
     e.stopPropagation();
