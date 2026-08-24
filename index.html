@@ -249,12 +249,6 @@
   .section-title .line{ flex:1; height:1px; background:var(--line); }
   .section-title:first-of-type{ margin-top:6px; }
 
-  .progress-card .chart-head{ margin-bottom:16px; }
-  .lin-progress-track{ height:14px; border-radius:8px; background:var(--bg); overflow:hidden; display:flex; }
-  .lin-progress-seg{ height:100%; transition:width .6s var(--ease); }
-  .lin-progress-num{ font-size:26px; font-weight:800; color:var(--ink); margin-bottom:4px; }
-  .lin-progress-sub{ font-size:12.5px; color:var(--ink-faint); margin-bottom:14px; }
-
   .vol-toggle{ display:flex; gap:6px; background:var(--bg); border-radius:9px; padding:3px; }
   .vol-toggle button{ border:none; background:transparent; padding:6px 12px; border-radius:7px; font-size:12px; font-weight:700; color:var(--ink-soft); cursor:pointer; transition:background .15s, color .15s; font-family:inherit; }
   .vol-toggle button.active{ background:var(--surface); color:var(--primary); box-shadow:var(--shadow-sm); }
@@ -609,22 +603,6 @@
       </div>
     </div>
     <div class="chart-wrap"><canvas id="volumeChart"></canvas></div>
-  </div>
-
-  <!-- TODO: wire to real data — Visit Complete count vs today's total
-       (todayTabCount), from ConsultantDashboardController::index() -->
-  <div class="chart-card progress-card">
-    <div class="chart-head"><div><h3>Today's progress</h3><p>Visit Complete vs today's patients</p></div></div>
-    <div class="lin-progress-num">61% completed</div>
-    <div class="lin-progress-sub">11 of 18 today's patients marked Visit Complete</div>
-    <div class="lin-progress-track">
-      <div class="lin-progress-seg" style="width:61%; background:#25A876;"></div>
-      <div class="lin-progress-seg" style="width:39%; background:#E0AC3B;"></div>
-    </div>
-    <div class="donut-legend" style="margin-top:14px;">
-      <div class="pill"><span style="background:#25A876"></span>Visit Complete · 11</div>
-      <div class="pill"><span style="background:#E0AC3B"></span>Still in progress · 7</div>
-    </div>
   </div>
 
   <!-- TODO: wire to real data — Patient model has 'age_year' and 'gender'
