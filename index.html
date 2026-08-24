@@ -83,6 +83,7 @@
     transition:background .15s var(--ease), color .15s var(--ease);
   }
   .nv-item:hover{ background:var(--primary-tint); color:var(--primary); }
+  .nv-item#navDashboard, .nv-item#navPatientInfo{ min-width:max-content; }
   .nv-item.active{ background:var(--primary); color:#fff; }
   .nv-item .chev{ width:12px; height:12px; transition:transform .2s var(--ease); }
   .nv-item.expandable.open .chev{ transform:rotate(180deg); }
@@ -469,7 +470,11 @@
     </div>
 
     <nav class="nv-menu" aria-label="Primary">
-      <div class="nv-item active" id="navPatientInfo" role="button" tabindex="0" aria-current="page" onclick="showSection('overview')" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();showSection('overview');}">
+      <div class="nv-item active" id="navDashboard" role="button" tabindex="0" aria-current="page" onclick="showSection('overview')" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();showSection('overview');}">
+        <svg aria-hidden="true" focusable="false" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="16" height="16"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/><rect x="14" y="14" width="7" height="7" rx="1"/></svg>
+        Dashboard
+      </div>
+      <div class="nv-item" id="navPatientInfo" role="button" tabindex="0" onclick="showSection('patients')" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();showSection('patients');}">
         <svg aria-hidden="true" focusable="false" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="16" height="16"><path d="M16 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="8.5" cy="7" r="4"/><path d="M20 8v6"/><path d="M23 11h-6"/></svg>
         Patient Information
       </div>
@@ -545,7 +550,11 @@
 
 <!-- Mobile dropdown menu (shown when hamburger is tapped, small screens only) -->
 <div class="nv-mobile-menu" id="mobileMenu">
-  <div class="nv-item active" id="navPatientInfoMobile" role="button" tabindex="0" aria-current="page" onclick="showSection('overview')" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();showSection('overview');}">
+  <div class="nv-item active" id="navDashboardMobile" role="button" tabindex="0" aria-current="page" onclick="showSection('overview')" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();showSection('overview');}">
+    <svg aria-hidden="true" focusable="false" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="16" height="16"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/><rect x="14" y="14" width="7" height="7" rx="1"/></svg>
+    Dashboard
+  </div>
+  <div class="nv-item" id="navPatientInfoMobile" role="button" tabindex="0" onclick="showSection('patients')" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();showSection('patients');}">
     <svg aria-hidden="true" focusable="false" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="16" height="16"><path d="M16 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="8.5" cy="7" r="4"/><path d="M20 8v6"/><path d="M23 11h-6"/></svg>
     Patient Information
   </div>
@@ -698,7 +707,7 @@
         <svg aria-hidden="true" focusable="false" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 00-3-3.87"/><path d="M16 3.13a4 4 0 010 7.75"/></svg>
         Patients &amp; Diagnostics
       </div>
-      <h1>Patients &amp; Diagnostics</h1>
+      <h1>Patient Information</h1>
     </div>
     <button type="button" class="btn btn-ghost" onclick="showSection('overview')">
       <svg aria-hidden="true" focusable="false" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 12H5"/><path d="M12 19l-7-7 7-7"/></svg>
@@ -971,7 +980,7 @@
     if (patients) patients.style.display = page === 'patients' ? '' : 'none';
     if (diagnostics) diagnostics.style.display = page === 'diagnostics' ? 'block' : 'none';
 
-    [['navPatientInfo','navPatientInfoMobile','overview'],['navDiagnostics','navDiagnosticsMobile','diagnostics']].forEach(([deskId,mobId,target])=>{
+    [['navDashboard','navDashboardMobile','overview'],['navPatientInfo','navPatientInfoMobile','patients'],['navDiagnostics','navDiagnosticsMobile','diagnostics']].forEach(([deskId,mobId,target])=>{
       [deskId,mobId].forEach(id=>{
         const el=document.getElementById(id);
         if(!el)return;
