@@ -222,6 +222,34 @@
   .chart-card:hover{ transform:translateY(-3px); box-shadow:var(--shadow-md); }
   .chart-card-full{ margin-bottom:14px; }
 
+  /* ===================== CUSTOM ENHANCEMENTS ===================== */
+  body.dark{
+    --bg:#0E1117; --surface:#151A22; --ink:#F5F7FB; --ink-soft:#AAB2C0; --ink-faint:#737D8E;
+    --line:#29313D; --line-soft:#202732; --primary-tint:#19244F; --accent-tint:#3A2023;
+    --success-tint:#123126; --warning-tint:#352B16;
+  }
+  body.dark .navbar{background:rgba(21,26,34,.78);}
+  body.dark .navbar.scrolled{background:rgba(21,26,34,.94);}
+  body.dark thead th, body.dark tbody tr:hover{background:#11161D;}
+  body.dark .tb-dropdown, body.dark .nv-submenu{background:#151A22;}
+  body.dark .input-wrap input, body.dark .input-wrap select, body.dark .nv-search input,
+  body.dark .nv-icon-round, body.dark .icon-btn, body.dark .btn-ghost, body.dark .today-chip{background:#151A22;color:var(--ink);}
+  body.dark .filter-card, body.dark .panel, body.dark .chart-card, body.dark .dark-donut-card,
+  body.dark .stat-card{box-shadow:0 12px 30px rgba(0,0,0,.18);}
+  .toast-stack{position:fixed;right:20px;top:84px;z-index:1000;display:flex;flex-direction:column;gap:10px;pointer-events:none;}
+  .toast{min-width:260px;max-width:360px;padding:12px 14px;border:1px solid var(--line);border-radius:12px;background:var(--surface);color:var(--ink);box-shadow:var(--shadow-md);font-size:13px;font-weight:600;animation:dropIn .25s var(--ease);}
+  .toast.success{border-left:4px solid var(--success)} .toast.info{border-left:4px solid var(--primary)} .toast.error{border-left:4px solid var(--accent)}
+  .modal-backdrop{position:fixed;inset:0;background:rgba(5,8,15,.52);backdrop-filter:blur(5px);display:none;align-items:center;justify-content:center;padding:20px;z-index:900;}
+  .modal-backdrop.open{display:flex;animation:fadeIn .2s ease;}
+  .patient-modal{width:min(560px,100%);background:var(--surface);border:1px solid var(--line);border-radius:18px;box-shadow:0 24px 70px rgba(0,0,0,.24);overflow:hidden;animation:riseIn .28s var(--ease);}
+  .patient-modal-head{display:flex;align-items:center;justify-content:space-between;padding:18px 20px;border-bottom:1px solid var(--line);}
+  .patient-modal-head h3{font-size:17px}.modal-close{width:32px;height:32px;border:1px solid var(--line);border-radius:8px;background:transparent;color:var(--ink-soft);cursor:pointer;font-size:18px;}
+  .modal-body{padding:20px}.patient-summary{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:14px;}
+  .detail-box{padding:12px;border:1px solid var(--line-soft);border-radius:10px;background:rgba(127,127,127,.03)} .detail-box small{display:block;color:var(--ink-faint);font-size:10px;font-weight:700;text-transform:uppercase;margin-bottom:4px}.detail-box strong{font-size:13px}
+  .modal-actions{display:flex;justify-content:flex-end;gap:8px;margin-top:18px}
+  .results-count{font-size:11.5px;color:var(--ink-faint);font-weight:600;}
+  @media(max-width:600px){.toast-stack{right:12px;left:12px}.toast{min-width:0;max-width:none}.patient-summary{grid-template-columns:1fr;}}
+
   /* Accessibility: visible focus rings, and respect reduced-motion preference */
   a:focus-visible, button:focus-visible, input:focus-visible, select:focus-visible,
   .nv-item:focus-visible, .tab:focus-visible, .icon-btn:focus-visible, .tb-profile:focus-visible{
@@ -252,6 +280,13 @@
   .vol-toggle{ display:flex; gap:6px; background:var(--bg); border-radius:9px; padding:3px; }
   .vol-toggle button{ border:none; background:transparent; padding:6px 12px; border-radius:7px; font-size:12px; font-weight:700; color:var(--ink-soft); cursor:pointer; transition:background .15s, color .15s; font-family:inherit; }
   .vol-toggle button.active{ background:var(--surface); color:var(--primary); box-shadow:var(--shadow-sm); }
+  .vol-filter-groups{ display:flex; flex-direction:column; align-items:flex-end; gap:5px; flex-wrap:nowrap; justify-content:center; }
+  .vol-filter-groups > .vol-toggle{ width:max-content; }
+  .vol-series-toggle{ border:1px solid var(--line-soft); }
+  .vol-series-toggle button{ min-width:76px; }
+  @media (max-width: 700px){
+    .vol-filter-groups{ width:100%; align-items:flex-start; justify-content:flex-start; }
+  }
   .dark-donut-body{ display:flex; align-items:center; gap:32px; flex-wrap:wrap; }
   .dark-donut-wrap{ position:relative; width:220px; height:220px; flex-shrink:0; }
   .side-legend{ display:flex; flex-direction:column; gap:11px; }
@@ -394,6 +429,23 @@
   @media (max-width: 380px){
     .stat-strip{ grid-template-columns:1fr; }
   }
+
+  .diagnostics-page{display:none;}
+  .diagnostics-tabs{display:flex;gap:28px;border-bottom:1px solid var(--line);margin-bottom:18px;}
+  .diagnostics-tab{padding:11px 2px;font-size:14px;font-weight:600;color:var(--ink-faint);border-bottom:2px solid transparent;}
+  .diagnostics-tab.active{color:var(--primary);border-bottom-color:var(--primary);}
+  .diag-badge{display:inline-flex;align-items:center;justify-content:center;min-width:22px;padding:2px 7px;border-radius:999px;background:var(--primary-tint);color:var(--primary);font-size:11px;font-weight:700;margin-left:4px;}
+  .diag-table td,.diag-table th{white-space:nowrap;}
+  .diag-test{font-weight:700;color:var(--ink);}
+  .diag-sub{font-size:12px;color:var(--ink-faint);margin-top:2px;}
+  .result-pill{display:inline-flex;align-items:center;gap:6px;padding:5px 9px;border-radius:999px;font-size:11.5px;font-weight:700;}
+  .result-pill.pending{background:var(--warning-tint);color:var(--warning);}
+  .result-pill.ready{background:var(--success-tint);color:var(--success);}
+  .result-pill.review{background:var(--primary-tint);color:var(--primary);}
+  .diag-empty{display:none;text-align:center;padding:54px 20px;color:var(--ink-soft);}
+  .diag-empty.show{display:block;}
+  .diag-toolbar-note{font-size:11.5px;color:var(--ink-faint);}
+  .diag-actions{display:flex;gap:6px;justify-content:flex-end;}
 </style>
 </head>
 <body>
@@ -431,7 +483,7 @@
           <div class="nv-subitem" role="menuitem" tabindex="0">Surgical Note</div>
         </div>
       </div>
-      <div class="nv-item" id="navDiagnostics" role="button" tabindex="0" onclick="showSection('patients')" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();showSection('patients');}">
+      <div class="nv-item" id="navDiagnostics" role="button" tabindex="0" onclick="showSection('diagnostics')" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();showSection('diagnostics');}">
         <svg aria-hidden="true" focusable="false" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="16" height="16"><path d="M22 12h-4l-3 9L9 3l-3 9H2"/></svg>
         Diagnostics
       </div>
@@ -444,7 +496,7 @@
       <svg aria-hidden="true" focusable="false" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="M21 21l-4.35-4.35"/></svg>
       <input type="text" id="patientSearch" placeholder="Search patients, MRN…">
     </div>
-    <div class="nv-icon-round" role="button" tabindex="0" aria-label="Notifications, 1 unread" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();this.click();}">
+    <div class="nv-icon-round" role="button" tabindex="0" aria-label="Notifications, 1 unread" onclick="showToast('1 new diagnostic result is ready for review.','info');this.querySelector('.ping')?.remove();" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();this.click();}">
       <span class="ping" aria-hidden="true"></span>
       <svg aria-hidden="true" focusable="false" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 8a6 6 0 00-12 0c0 7-3 9-3 9h18s-3-2-3-9"/><path d="M13.73 21a2 2 0 01-3.46 0"/></svg>
     </div>
@@ -471,6 +523,10 @@
           <div class="tb-dropdown-item">
             <svg aria-hidden="true" focusable="false" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 00.33 1.82l.06.06a2 2 0 11-2.83 2.83l-.06-.06a1.65 1.65 0 00-1.82-.33 1.65 1.65 0 00-1 1.51V21a2 2 0 01-4 0v-.09A1.65 1.65 0 009 19.4a1.65 1.65 0 00-1.82.33l-.06.06a2 2 0 11-2.83-2.83l.06-.06a1.65 1.65 0 00.33-1.82 1.65 1.65 0 00-1.51-1H3a2 2 0 010-4h.09A1.65 1.65 0 004.6 9a1.65 1.65 0 00-.33-1.82l-.06-.06a2 2 0 112.83-2.83l.06.06a1.65 1.65 0 001.82.33H9a1.65 1.65 0 001-1.51V3a2 2 0 014 0v.09a1.65 1.65 0 001 1.51 1.65 1.65 0 001.82-.33l.06-.06a2 2 0 112.83 2.83l-.06.06a1.65 1.65 0 00-.33 1.82V9a1.65 1.65 0 001.51 1H21a2 2 0 010 4h-.09a1.65 1.65 0 00-1.51 1z"/></svg>
             Account Settings
+          </div>
+          <div class="tb-dropdown-item" onclick="toggleDarkMode();event.stopPropagation();">
+            <svg aria-hidden="true" focusable="false" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"/></svg>
+            <span id="themeMenuText">Dark mode</span>
           </div>
           <div class="tb-dropdown-item">
             <svg aria-hidden="true" focusable="false" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 20a8 8 0 100-16 8 8 0 000 16z"/><path d="M12 8v4l3 2"/></svg>
@@ -503,7 +559,7 @@
     <div class="nv-subitem" role="menuitem" tabindex="0">Diagnostic Visit</div>
     <div class="nv-subitem" role="menuitem" tabindex="0">Surgical Note</div>
   </div>
-  <div class="nv-item" id="navDiagnosticsMobile" role="button" tabindex="0" onclick="showSection('patients')" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();showSection('patients');}">
+  <div class="nv-item" id="navDiagnosticsMobile" role="button" tabindex="0" onclick="showSection('diagnostics')" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();showSection('diagnostics');}">
     <svg aria-hidden="true" focusable="false" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="16" height="16"><path d="M22 12h-4l-3 9L9 3l-3 9H2"/></svg>
     Diagnostics
   </div>
@@ -549,13 +605,13 @@
     </div>
   </div>
 
-  <!-- TODO: wire to real data — group $patientRows (unifiedPatientRows()) by
-       'type' (clinical / diagnostics / surgical), from
-       ConsultantDashboardController::index() -->
+  <!-- TODO: wire to real data — group today's visits by visit type and clinical journey stage -->
   <div class="section-title"><h2>Patients by Type</h2><div class="line"></div></div>
   <div class="donut-row">
     <div class="chart-card">
-      <div class="chart-head"><div><h3>Patient list breakdown</h3><p>Today's patients tab · 17 total</p></div></div>
+      <div class="chart-head">
+        <div><h3>Patient list breakdown</h3><p>Today's patients tab · 17 total</p></div>
+      </div>
       <div class="chart-wrap donut">
         <canvas id="typeChart"></canvas>
         <div class="donut-center"><div class="num">17</div><div class="lbl">Total</div></div>
@@ -567,10 +623,7 @@
       </div>
     </div>
 
-    <!-- TODO: wire to real data — count ClinicalVisit::STATUS_* stages
-         (patient_status column) for today, per
-         ConsultantDashboardController::STATUS_FILTER_OPTIONS -->
-    <div class="dark-donut-card">
+    <div class="dark-donut-card" style="margin-bottom:0;">
       <div class="chart-head">
         <div><h3>Clinical status breakdown</h3><p>Today's patients, by journey stage</p></div>
       </div>
@@ -595,11 +648,13 @@
   <div class="section-title"><h2>Patients Trend</h2><div class="line"></div></div>
   <div class="chart-card chart-card-full">
     <div class="chart-head">
-      <div><h3 id="volTitle">Patients trend this week</h3><p id="volSub">Referred + scheduled patients over time</p></div>
-      <div class="vol-toggle">
-        <button type="button" class="active" onclick="setVolRange('week')">This Week</button>
-        <button type="button" onclick="setVolRange('month')">This Month</button>
-        <button type="button" onclick="setVolRange('start')">From Start</button>
+      <div><h3 id="volTitle">Patients trend this week</h3><p id="volSub">New + follow-up patients over time</p></div>
+      <div class="vol-filter-groups" aria-label="Patient trend filters">
+        <div class="vol-toggle" role="group" aria-label="Date range">
+          <button type="button" class="active" data-range="week" onclick="setVolRange('week')">This Week</button>
+          <button type="button" data-range="month" onclick="setVolRange('month')">This Month</button>
+          <button type="button" data-range="start" onclick="setVolRange('start')">From Start</button>
+        </div>
       </div>
     </div>
     <div class="chart-wrap"><canvas id="volumeChart"></canvas></div>
@@ -614,25 +669,6 @@
     </div>
     <div class="chart-wrap-tall"><canvas id="ageGenderChart"></canvas></div>
   </div>
-
-  <!-- TODO: wire to real data — diagnosticsQueueCount (pending) vs
-       performedHistory count (completed), from
-       ConsultantDashboardController::index() -->
-  <div class="section-title"><h2>Diagnostics Queue</h2><div class="line"></div></div>
-  <div class="chart-card">
-    <div class="chart-head">
-      <div><h3>Pending vs completed tests</h3><p>This doctor's diagnostic orders</p></div>
-    </div>
-    <div class="chart-wrap donut">
-      <canvas id="diagnosticsChart"></canvas>
-      <div class="donut-center"><div class="num">14</div><div class="lbl">Total</div></div>
-    </div>
-    <div class="donut-legend">
-      <div class="pill"><span style="background:#E0AC3B"></span>Pending · 5</div>
-      <div class="pill"><span style="background:#25A876"></span>Completed · 9</div>
-    </div>
-  </div>
-
 
 </div>
 <!-- /overviewSection -->
@@ -662,14 +698,14 @@
         <label>Search</label>
         <div class="input-wrap">
           <svg aria-hidden="true" focusable="false" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="M21 21l-4.35-4.35"/></svg>
-          <input type="text" placeholder="MRN, name, or phone">
+          <input type="text" id="filterSearch" placeholder="MRN, name, or phone">
         </div>
       </div>
       <div class="field">
         <label>Visit type</label>
         <div class="input-wrap">
           <svg aria-hidden="true" focusable="false" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4"/><path d="M8 2v4"/><path d="M3 10h18"/></svg>
-          <select><option>All visit types</option><option>New consultation</option><option>Follow-up</option><option>Post-op review</option></select>
+          <select id="visitTypeFilter"><option>All visit types</option><option>New consultation</option><option>Follow-up</option><option>Post-op review</option></select>
           <svg aria-hidden="true" focusable="false" class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg>
         </div>
       </div>
@@ -677,7 +713,7 @@
         <label>Clinical status</label>
         <div class="input-wrap">
           <svg aria-hidden="true" focusable="false" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 11.08V12a10 10 0 11-5.93-9.14"/><path d="M22 4L12 14.01l-3-3"/></svg>
-          <select><option>All statuses</option><option>Scheduled</option><option>In progress</option><option>Completed</option></select>
+          <select id="statusFilter"><option>All statuses</option><option>Scheduled</option><option>In progress</option><option>Completed</option></select>
           <svg aria-hidden="true" focusable="false" class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg>
         </div>
       </div>
@@ -685,22 +721,22 @@
         <label>Start date</label>
         <div class="input-wrap">
           <svg aria-hidden="true" focusable="false" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4"/><path d="M8 2v4"/><path d="M3 10h18"/></svg>
-          <input type="text" value="Aug 21, 2026">
+          <input type="date" id="startDateFilter" value="2026-08-21">
         </div>
       </div>
       <div class="field">
         <label>End date</label>
         <div class="input-wrap">
           <svg aria-hidden="true" focusable="false" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4"/><path d="M8 2v4"/><path d="M3 10h18"/></svg>
-          <input type="text" value="Aug 21, 2026">
+          <input type="date" id="endDateFilter" value="2026-08-21">
         </div>
       </div>
       <div class="filter-actions">
-        <button class="btn btn-ghost" onclick="toggleDemo(false)">
+        <button class="btn btn-ghost" onclick="resetPatientFilters()">
           <svg aria-hidden="true" focusable="false" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M1 4v6h6"/><path d="M3.51 15a9 9 0 102.13-9.36L1 10"/></svg>
           Reset
         </button>
-        <button class="btn btn-primary" onclick="toggleDemo(true)">
+        <button class="btn btn-primary" onclick="applyPatientFilters()">
           <svg aria-hidden="true" focusable="false" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 3H2l8 9.46V19l4 2v-8.54L22 3z"/></svg>
           Apply
         </button>
@@ -710,8 +746,11 @@
 
   <div class="panel">
     <div class="panel-head">
-      <h3>Patients</h3>
-      <span class="toggle" role="button" tabindex="0" onclick="toggleDemo()" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();toggleDemo();}">Toggle sample data</span>
+      <div style="display:flex;align-items:center;gap:10px;"><h3>Patients</h3><span class="results-count" id="resultsCount">0 shown</span></div>
+      <div style="display:flex;align-items:center;gap:12px;">
+        <span class="toggle" role="button" tabindex="0" onclick="toggleDemo()" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();toggleDemo();}">Toggle sample data</span>
+        <button class="btn btn-ghost" style="height:32px;padding:0 11px;font-size:12px;" onclick="exportPatientsCSV()">Export CSV</button>
+      </div>
     </div>
 
     <div class="empty-state show" id="emptyState">
@@ -741,8 +780,8 @@
           <td data-label="Status"><div class="status progress"><span class="acuity"></span><span class="status-label">In progress</span></div></td>
           <td class="mono" data-label="Time">9:00 AM</td>
           <td data-label="Actions"><div class="row-actions">
-            <button type="button" class="icon-btn" aria-label="View patient"><svg aria-hidden="true" focusable="false" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M1 12s4-7 11-7 11 7 11 7-4 7-11 7-11-7-11-7z"/><circle cx="12" cy="12" r="3"/></svg></button>
-            <button type="button" class="icon-btn" aria-label="Edit patient"><svg aria-hidden="true" focusable="false" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M11 4H4a2 2 0 00-2 2v14a2 2 0 002 2h14a2 2 0 002-2v-7"/><path d="M18.5 2.5a2.12 2.12 0 013 3L12 15l-4 1 1-4z"/></svg></button>
+            <button type="button" class="icon-btn" aria-label="View patient" onclick="viewPatient(this)"><svg aria-hidden="true" focusable="false" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M1 12s4-7 11-7 11 7 11 7-4 7-11 7-11-7-11-7z"/><circle cx="12" cy="12" r="3"/></svg></button>
+            <button type="button" class="icon-btn" aria-label="Edit patient" onclick="editPatient(this)"><svg aria-hidden="true" focusable="false" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M11 4H4a2 2 0 00-2 2v14a2 2 0 002 2h14a2 2 0 002-2v-7"/><path d="M18.5 2.5a2.12 2.12 0 013 3L12 15l-4 1 1-4z"/></svg></button>
           </div></td>
         </tr>
         <tr>
@@ -751,8 +790,8 @@
           <td data-label="Status"><div class="status progress"><span class="acuity"></span><span class="status-label">In progress</span></div></td>
           <td class="mono" data-label="Time">9:20 AM</td>
           <td data-label="Actions"><div class="row-actions">
-            <button type="button" class="icon-btn" aria-label="View patient"><svg aria-hidden="true" focusable="false" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M1 12s4-7 11-7 11 7 11 7-4 7-11 7-11-7-11-7z"/><circle cx="12" cy="12" r="3"/></svg></button>
-            <button type="button" class="icon-btn" aria-label="Edit patient"><svg aria-hidden="true" focusable="false" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M11 4H4a2 2 0 00-2 2v14a2 2 0 002 2h14a2 2 0 002-2v-7"/><path d="M18.5 2.5a2.12 2.12 0 013 3L12 15l-4 1 1-4z"/></svg></button>
+            <button type="button" class="icon-btn" aria-label="View patient" onclick="viewPatient(this)"><svg aria-hidden="true" focusable="false" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M1 12s4-7 11-7 11 7 11 7-4 7-11 7-11-7-11-7z"/><circle cx="12" cy="12" r="3"/></svg></button>
+            <button type="button" class="icon-btn" aria-label="Edit patient" onclick="editPatient(this)"><svg aria-hidden="true" focusable="false" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M11 4H4a2 2 0 00-2 2v14a2 2 0 002 2h14a2 2 0 002-2v-7"/><path d="M18.5 2.5a2.12 2.12 0 013 3L12 15l-4 1 1-4z"/></svg></button>
           </div></td>
         </tr>
         <tr>
@@ -761,8 +800,8 @@
           <td data-label="Status"><div class="status done"><span class="acuity"></span><span class="status-label">Completed</span></div></td>
           <td class="mono" data-label="Time">8:40 AM</td>
           <td data-label="Actions"><div class="row-actions">
-            <button type="button" class="icon-btn" aria-label="View patient"><svg aria-hidden="true" focusable="false" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M1 12s4-7 11-7 11 7 11 7-4 7-11 7-11-7-11-7z"/><circle cx="12" cy="12" r="3"/></svg></button>
-            <button type="button" class="icon-btn" aria-label="Edit patient"><svg aria-hidden="true" focusable="false" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M11 4H4a2 2 0 00-2 2v14a2 2 0 002 2h14a2 2 0 002-2v-7"/><path d="M18.5 2.5a2.12 2.12 0 013 3L12 15l-4 1 1-4z"/></svg></button>
+            <button type="button" class="icon-btn" aria-label="View patient" onclick="viewPatient(this)"><svg aria-hidden="true" focusable="false" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M1 12s4-7 11-7 11 7 11 7-4 7-11 7-11-7-11-7z"/><circle cx="12" cy="12" r="3"/></svg></button>
+            <button type="button" class="icon-btn" aria-label="Edit patient" onclick="editPatient(this)"><svg aria-hidden="true" focusable="false" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M11 4H4a2 2 0 00-2 2v14a2 2 0 002 2h14a2 2 0 002-2v-7"/><path d="M18.5 2.5a2.12 2.12 0 013 3L12 15l-4 1 1-4z"/></svg></button>
           </div></td>
         </tr>
         <tr>
@@ -771,8 +810,8 @@
           <td data-label="Status"><div class="status scheduled"><span class="acuity"></span><span class="status-label">Scheduled</span></div></td>
           <td class="mono" data-label="Time">10:15 AM</td>
           <td data-label="Actions"><div class="row-actions">
-            <button type="button" class="icon-btn" aria-label="View patient"><svg aria-hidden="true" focusable="false" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M1 12s4-7 11-7 11 7 11 7-4 7-11 7-11-7-11-7z"/><circle cx="12" cy="12" r="3"/></svg></button>
-            <button type="button" class="icon-btn" aria-label="Edit patient"><svg aria-hidden="true" focusable="false" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M11 4H4a2 2 0 00-2 2v14a2 2 0 002 2h14a2 2 0 002-2v-7"/><path d="M18.5 2.5a2.12 2.12 0 013 3L12 15l-4 1 1-4z"/></svg></button>
+            <button type="button" class="icon-btn" aria-label="View patient" onclick="viewPatient(this)"><svg aria-hidden="true" focusable="false" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M1 12s4-7 11-7 11 7 11 7-4 7-11 7-11-7-11-7z"/><circle cx="12" cy="12" r="3"/></svg></button>
+            <button type="button" class="icon-btn" aria-label="Edit patient" onclick="editPatient(this)"><svg aria-hidden="true" focusable="false" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M11 4H4a2 2 0 00-2 2v14a2 2 0 002 2h14a2 2 0 002-2v-7"/><path d="M18.5 2.5a2.12 2.12 0 013 3L12 15l-4 1 1-4z"/></svg></button>
           </div></td>
         </tr>
       </tbody>
@@ -782,6 +821,116 @@
 
 </div>
 
+<div id="diagnosticsSection" class="diagnostics-page">
+  <div class="page-head">
+    <div>
+      <div class="eyebrow">
+        <svg aria-hidden="true" focusable="false" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 12h-4l-3 9L9 3l-3 9H2"/></svg>
+        Patients &amp; Diagnostics
+      </div>
+      <h1>Patients &amp; Diagnostics</h1>
+    </div>
+    <button type="button" class="btn btn-ghost" onclick="showSection('overview')">
+      <svg aria-hidden="true" focusable="false" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 12H5"/><path d="M12 19l-7-7 7-7"/></svg>
+      Back to Dashboard
+    </button>
+  </div>
+
+  <div class="diagnostics-tabs" aria-label="Patients and diagnostics">
+    <div class="diagnostics-tab">Patients <span class="diag-badge">18</span></div>
+    <div class="diagnostics-tab active">Diagnostics <span class="diag-badge">4</span></div>
+  </div>
+
+  <div class="filter-card">
+    <div class="filter-grid">
+      <div class="field">
+        <label>Search</label>
+        <div class="input-wrap">
+          <svg aria-hidden="true" focusable="false" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="M21 21l-4.35-4.35"/></svg>
+          <input type="text" id="diagSearch" placeholder="MRN, patient, or test">
+        </div>
+      </div>
+      <div class="field">
+        <label>Test type</label>
+        <div class="input-wrap">
+          <svg aria-hidden="true" focusable="false" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 5h16M7 12h10M10 19h4"/></svg>
+          <select id="diagTypeFilter"><option>All test types</option><option>OCT</option><option>Visual Field</option><option>Fundus Photography</option><option>Biometry</option></select>
+          <svg aria-hidden="true" focusable="false" class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg>
+        </div>
+      </div>
+      <div class="field">
+        <label>Result status</label>
+        <div class="input-wrap">
+          <svg aria-hidden="true" focusable="false" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2v20M2 12h20"/></svg>
+          <select id="diagStatusFilter"><option>All statuses</option><option>Pending</option><option>Ready</option><option>Review</option></select>
+          <svg aria-hidden="true" focusable="false" class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg>
+        </div>
+      </div>
+      <div class="field">
+        <label>Start date</label>
+        <div class="input-wrap">
+          <svg aria-hidden="true" focusable="false" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/></svg>
+          <input type="date" id="diagStartDate" value="2026-08-21">
+        </div>
+      </div>
+      <div class="field">
+        <label>End date</label>
+        <div class="input-wrap">
+          <svg aria-hidden="true" focusable="false" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/></svg>
+          <input type="date" id="diagEndDate" value="2026-08-21">
+        </div>
+      </div>
+      <div class="filter-actions">
+        <button class="btn btn-ghost" onclick="resetDiagnosticsFilters()">
+          <svg aria-hidden="true" focusable="false" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M1 4v6h6"/><path d="M3.51 15a9 9 0 102.13-9.36L1 10"/></svg>
+          Reset
+        </button>
+        <button class="btn btn-primary" onclick="applyDiagnosticsFilters()">
+          <svg aria-hidden="true" focusable="false" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 3H2l8 9.46V19l4 2v-8.54L22 3z"/></svg>
+          Apply
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <div class="panel">
+    <div class="panel-head">
+      <div style="display:flex;align-items:center;gap:10px;"><h3>Diagnostics</h3><span class="results-count" id="diagResultsCount">4 shown</span></div>
+      <div class="diag-toolbar-note">Today's diagnostic orders</div>
+    </div>
+    <div class="table-scroll">
+      <table class="diag-table" id="diagnosticsTable">
+        <thead><tr><th>Patient</th><th>Test</th><th>MRN</th><th>Ordered</th><th>Status</th><th style="text-align:right;">Actions</th></tr></thead>
+        <tbody id="diagnosticsRows">
+          <tr data-type="OCT" data-status="Ready"><td><div class="patient-cell"><div class="p-av" style="background:#1E39E0;">FZ</div><div><div class="p-nm">Fatima Zahra</div><div class="p-sb">54 · Female</div></div></div></td><td><div class="diag-test">OCT Macula</div><div class="diag-sub">Both eyes</div></td><td class="mono mrn">MRN-08231</td><td class="mono">8:10 AM</td><td><span class="result-pill ready">Ready</span></td><td><div class="diag-actions"><button type="button" class="icon-btn" aria-label="View diagnostic result" onclick="showToast('Opening OCT result for Fatima Zahra','info')">👁</button><button type="button" class="icon-btn" aria-label="Review diagnostic result" onclick="showToast('Result marked for consultant review','success')">✓</button></div></td></tr>
+          <tr data-type="Visual Field" data-status="Pending"><td><div class="patient-cell"><div class="p-av" style="background:#C08A15;">AR</div><div><div class="p-nm">Ahmed Raza</div><div class="p-sb">38 · Male</div></div></div></td><td><div class="diag-test">Visual Field</div><div class="diag-sub">24-2 screening</div></td><td class="mono mrn">MRN-08214</td><td class="mono">9:05 AM</td><td><span class="result-pill pending">Pending</span></td><td><div class="diag-actions"><button type="button" class="icon-btn" aria-label="View diagnostic result" onclick="showToast('Visual field result is still pending','info')">👁</button></div></td></tr>
+          <tr data-type="Fundus Photography" data-status="Review"><td><div class="patient-cell"><div class="p-av" style="background:#25A876;">SK</div><div><div class="p-nm">Sana Khalid</div><div class="p-sb">61 · Female</div></div></div></td><td><div class="diag-test">Fundus Photography</div><div class="diag-sub">Retinal imaging</div></td><td class="mono mrn">MRN-08199</td><td class="mono">9:30 AM</td><td><span class="result-pill review">Review</span></td><td><div class="diag-actions"><button type="button" class="icon-btn" aria-label="Review image" onclick="showToast('Fundus images opened for review','info')">👁</button></div></td></tr>
+          <tr data-type="Biometry" data-status="Ready"><td><div class="patient-cell"><div class="p-av" style="background:#57575F;">MI</div><div><div class="p-nm">Muhammad Idrees</div><div class="p-sb">29 · Male</div></div></div></td><td><div class="diag-test">Biometry</div><div class="diag-sub">IOL calculation</div></td><td class="mono mrn">MRN-08247</td><td class="mono">10:15 AM</td><td><span class="result-pill ready">Ready</span></td><td><div class="diag-actions"><button type="button" class="icon-btn" aria-label="View biometry" onclick="showToast('Biometry result opened for Muhammad Idrees','info')">👁</button><button type="button" class="icon-btn" aria-label="Review biometry" onclick="showToast('Biometry result marked for review','success')">✓</button></div></td></tr>
+        </tbody>
+      </table>
+      <div class="diag-empty" id="diagEmpty">No diagnostic orders match the current filters.</div>
+    </div>
+  </div>
+</div>
+
+</div>
+
+<div class="toast-stack" id="toastStack" aria-live="polite" aria-atomic="true"></div>
+<div class="modal-backdrop" id="patientModalBackdrop" role="dialog" aria-modal="true" aria-labelledby="patientModalTitle" onclick="if(event.target===this)closePatientModal()">
+  <div class="patient-modal">
+    <div class="patient-modal-head">
+      <h3 id="patientModalTitle">Patient details</h3>
+      <button class="modal-close" type="button" aria-label="Close" onclick="closePatientModal()">&times;</button>
+    </div>
+    <div class="modal-body">
+      <div id="patientModalSubtitle" style="color:var(--ink-soft);font-size:12px;"></div>
+      <div class="patient-summary" id="patientModalDetails"></div>
+      <div class="modal-actions">
+        <button class="btn btn-ghost" onclick="closePatientModal()">Close</button>
+        <button class="btn btn-primary" id="modalPrimaryAction" onclick="showToast('Edit mode is ready for backend integration.','info');closePatientModal();">Edit patient</button>
+      </div>
+    </div>
+  </div>
 </div>
 
 <script>
@@ -798,21 +947,23 @@
   function showSection(section){
     const overview = document.getElementById('overviewSection');
     const patients = document.getElementById('patientsSection');
-    const isPatients = section === 'patients';
-    overview.style.display = isPatients ? 'none' : '';
-    patients.style.display = isPatients ? '' : 'none';
+    const diagnostics = document.getElementById('diagnosticsSection');
+    const page = section === 'patients' ? 'patients' : (section === 'diagnostics' ? 'diagnostics' : 'overview');
+    if (overview) overview.style.display = page === 'overview' ? '' : 'none';
+    if (patients) patients.style.display = page === 'patients' ? '' : 'none';
+    if (diagnostics) diagnostics.style.display = page === 'diagnostics' ? 'block' : 'none';
 
-    [['navPatientInfo','navPatientInfoMobile', !isPatients], ['navDiagnostics','navDiagnosticsMobile', isPatients]].forEach(([deskId, mobId, active]) => {
-      [deskId, mobId].forEach(id => {
-        const el = document.getElementById(id);
-        if (!el) return;
-        el.classList.toggle('active', active);
-        if (active) el.setAttribute('aria-current','page'); else el.removeAttribute('aria-current');
+    [['navPatientInfo','navPatientInfoMobile','overview'],['navDiagnostics','navDiagnosticsMobile','diagnostics']].forEach(([deskId,mobId,target])=>{
+      [deskId,mobId].forEach(id=>{
+        const el=document.getElementById(id);
+        if(!el)return;
+        const active=page===target;
+        el.classList.toggle('active',active);
+        if(active)el.setAttribute('aria-current','page'); else el.removeAttribute('aria-current');
       });
     });
-
-    if (document.getElementById('mobileMenu').classList.contains('open')) toggleMobileMenu();
-    window.scrollTo({top:0, behavior:'smooth'});
+    if(document.getElementById('mobileMenu')?.classList.contains('open')) toggleMobileMenu();
+    window.scrollTo({top:0,behavior:'smooth'});
   }
 
   function toggleProfileMenu(e){
@@ -922,21 +1073,21 @@
   // e.g. GET /api/consultant/volume-trend?range=week|month|start
   const volRanges = {
     week:{
-      title:'Patient volume this week', sub:'Consultations across all visit types',
+      title:'Patient volume this week', sub:'New + follow-up patients over time',
       labels:['Mon','Tue','Wed','Thu','Fri','Sat'],
       primaryLabel:'New', secondaryLabel:'Follow-up',
       primary:[9,12,14,10,16,11], secondary:[5,6,4,7,5,8]
     },
     month:{
-      title:'Patient volume this month', sub:'Consultations across all visit types',
+      title:'Patient volume this month', sub:'New + follow-up patients over time',
       labels:['Wk 1','Wk 2','Wk 3','Wk 4'],
       primaryLabel:'New', secondaryLabel:'Follow-up',
       primary:[52,61,58,64], secondary:[24,27,22,29]
     },
     start:{
-      title:'Patient volume — from start', sub:'OPD consultations & surgeries trend',
+      title:'Patient volume — from start', sub:'New + follow-up patients over time',
       labels:['Mar','Apr','May','Jun','Jul','Aug'],
-      primaryLabel:'Consultations', secondaryLabel:'Surgeries',
+      primaryLabel:'New', secondaryLabel:'Follow-up',
       primary:[312,338,295,360,401,378], secondary:[48,52,44,58,63,60]
     }
   };
@@ -971,10 +1122,27 @@
     volumeChart.data.datasets[1].label = r.secondaryLabel;
     volumeChart.data.datasets[1].data = r.secondary;
     volumeChart.update();
-    const order = ['week','month','start'];
-    document.querySelectorAll('.vol-toggle button').forEach((b,i)=>{
-      b.classList.toggle('active', order[i] === key);
+    document.querySelectorAll('.vol-toggle:not(.vol-series-toggle) button').forEach((b)=>{
+      b.classList.toggle('active', b.dataset.range === key);
     });
+  }
+
+  function setVolSeries(key){
+    const index = key === 'new' ? 0 : 1;
+    const button = document.querySelector(`.vol-series-toggle button[data-series="${key}"]`);
+    const nextVisible = !volumeChart.isDatasetVisible(index);
+    const otherIndex = index === 0 ? 1 : 0;
+
+    // Never leave the chart with both series hidden.
+    if(!nextVisible && !volumeChart.isDatasetVisible(otherIndex)){
+      volumeChart.setDatasetVisibility(index, true);
+      button?.classList.add('active');
+      return;
+    }
+
+    volumeChart.setDatasetVisibility(index, nextVisible);
+    button?.classList.toggle('active', nextVisible);
+    volumeChart.update();
   }
 
   // ---- reusable per-slice gradient + on-arc percentage labels (donut charts) ----
@@ -1024,21 +1192,6 @@
     }
   };
 
-  const typeGradients = [['#4A63E8','#1E39E0'], ['#C3CDF7','#A9B6F5'], ['#38C495','#25A876']];
-  new Chart(document.getElementById('typeChart'), {
-    type:'doughnut',
-    data:{
-      labels:['Clinical','Diagnostics','Surgical'],
-      datasets:[{
-        data:[9,5,3],
-        backgroundColor:(ctx) => ctx.dataIndex === undefined ? '#1E39E0' : sliceGradient(ctx, ...typeGradients[ctx.dataIndex]),
-        borderWidth:0, hoverOffset:6
-      }]
-    },
-    options:{ responsive:true, maintainAspectRatio:false, cutout:'72%', plugins:{ legend:{ display:false } } },
-    plugins:[percentLabelsPlugin]
-  });
-
   // ---- fade-to-black radial gradient, matching the reference "Basic Donut Graph Gradient" style ----
   function sliceGradientToBlack(ctx, colorBright){
     const chart = ctx.chart;
@@ -1056,6 +1209,21 @@
     return g;
   }
 
+  const typeGradients = [['#4A63E8','#1E39E0'], ['#C3CDF7','#A9B6F5'], ['#38C495','#25A876']];
+  new Chart(document.getElementById('typeChart'), {
+    type:'doughnut',
+    data:{
+      labels:['Clinical','Diagnostics','Surgical'],
+      datasets:[{
+        data:[9,5,3],
+        backgroundColor:(ctx) => ctx.dataIndex === undefined ? '#1E39E0' : sliceGradient(ctx, ...typeGradients[ctx.dataIndex]),
+        borderWidth:0, hoverOffset:6
+      }]
+    },
+    options:{ responsive:true, maintainAspectRatio:false, cutout:'72%', plugins:{ legend:{ display:false } } },
+    plugins:[percentLabelsPlugin]
+  });
+
   const specialtyColors = ['#0B2A5C','#1E39E0','#E0AC3B','#E14B4B','#5FBFB3'];
   new Chart(document.getElementById('specialtyChart'), {
     type:'doughnut',
@@ -1068,21 +1236,6 @@
       }]
     },
     options:{ responsive:true, maintainAspectRatio:false, cutout:'58%', plugins:{ legend:{ display:false } } },
-    plugins:[percentLabelsPlugin]
-  });
-
-  // ---- Diagnostics queue: pending vs completed ----
-  new Chart(document.getElementById('diagnosticsChart'), {
-    type:'doughnut',
-    data:{
-      labels:['Pending','Completed'],
-      datasets:[{
-        data:[5,9],
-        backgroundColor:(ctx) => ctx.dataIndex === undefined ? '#E0AC3B' : sliceGradient(ctx, ...[['#F2C868','#E0AC3B'], ['#38C495','#25A876']][ctx.dataIndex]),
-        borderWidth:0, hoverOffset:6
-      }]
-    },
-    options:{ responsive:true, maintainAspectRatio:false, cutout:'72%', plugins:{ legend:{ display:false } } },
     plugins:[percentLabelsPlugin]
   });
 
@@ -1123,6 +1276,151 @@
   } catch (err) {
     showChartFallback(err);
   }
+</script>
+
+<script>
+(function(){
+  const body=document.body;
+  const storedTheme=localStorage.getItem('stEyeTheme');
+  if(storedTheme==='dark') body.classList.add('dark');
+  updateThemeText();
+
+  // Header search: automatically open patient view and filter rows.
+  const headerSearch=document.getElementById('patientSearch');
+  headerSearch?.addEventListener('input', function(){
+    const value=this.value.trim();
+    if(value){ showSection('patients'); const f=document.getElementById('filterSearch'); if(f) f.value=value; applyPatientFilters(); }
+  });
+
+  document.addEventListener('keydown', e=>{ if(e.key==='Escape') closePatientModal(); });
+
+  // Store original rows for reusable filtering.
+  window._patientRows=Array.from(document.querySelectorAll('#populated tr')).map(tr=>({
+    tr,
+    text:tr.innerText.toLowerCase(),
+    visit:(tr.cells[2]?.innerText||'').trim(),
+    status:(tr.cells[3]?.innerText||'').trim()
+  }));
+  updateResultsCount();
+})();
+
+function toggleDarkMode(){
+  document.body.classList.toggle('dark');
+  localStorage.setItem('stEyeTheme',document.body.classList.contains('dark')?'dark':'light');
+  updateThemeText();
+  showToast(document.body.classList.contains('dark')?'Dark mode enabled':'Light mode enabled','info');
+}
+function updateThemeText(){
+  const el=document.getElementById('themeMenuText'); if(el) el.textContent=document.body.classList.contains('dark')?'Light mode':'Dark mode';
+}
+function showToast(message,type='info'){
+  const stack=document.getElementById('toastStack'); if(!stack)return;
+  const t=document.createElement('div'); t.className='toast '+type; t.textContent=message; stack.appendChild(t);
+  setTimeout(()=>{t.style.opacity='0';t.style.transform='translateY(-4px)';t.style.transition='all .2s';setTimeout(()=>t.remove(),220)},2800);
+}
+function applyPatientFilters(){
+  const table=document.getElementById('dataTable'), empty=document.getElementById('emptyState');
+  const q=(document.getElementById('filterSearch')?.value||'').trim().toLowerCase();
+  const visit=document.getElementById('visitTypeFilter')?.value||'All visit types';
+  const status=document.getElementById('statusFilter')?.value||'All statuses';
+  if(!table||!empty)return;
+  table.style.display='table';
+  document.getElementById('populated').classList.add('show');
+  let shown=0;
+  (window._patientRows||[]).forEach(item=>{
+    const qOk=!q||item.text.includes(q);
+    const vOk=visit==='All visit types'||item.visit===visit;
+    const sOk=status==='All statuses'||item.status===status;
+    const show=qOk&&vOk&&sOk; item.tr.style.display=show?'':'none'; if(show)shown++;
+  });
+  empty.classList.toggle('show',shown===0);
+  if(shown===0){ table.style.display='none'; }
+  updateResultsCount(shown);
+  showToast(shown+' matching patient'+(shown===1?'':'s')+' found','success');
+}
+function resetPatientFilters(){
+  const f=document.getElementById('filterSearch'); const v=document.getElementById('visitTypeFilter'); const s=document.getElementById('statusFilter');
+  if(f)f.value=''; if(v)v.value='All visit types'; if(s)s.value='All statuses';
+  document.getElementById('startDateFilter')?.setAttribute('value','2026-08-21'); document.getElementById('endDateFilter')?.setAttribute('value','2026-08-21');
+  toggleDemo(false); updateResultsCount(0); showToast('Filters reset','info');
+}
+function updateResultsCount(n){
+  if(n===undefined) n=(window._patientRows||[]).filter(x=>x.tr.style.display!=='none').length;
+  const el=document.getElementById('resultsCount'); if(el)el.textContent=n+' shown';
+}
+function patientFromButton(btn){
+  const tr=btn.closest('tr'); if(!tr)return null;
+  return {name:tr.querySelector('.p-nm')?.textContent||'Patient',meta:tr.querySelector('.p-sb')?.textContent||'',mrn:tr.querySelector('.mrn')?.textContent||'',visit:tr.cells[2]?.innerText.trim()||'',status:tr.cells[3]?.innerText.trim()||'',time:tr.cells[4]?.innerText.trim()||''};
+}
+function viewPatient(btn){
+  const p=patientFromButton(btn); if(!p)return;
+  document.getElementById('patientModalTitle').textContent=p.name;
+  document.getElementById('patientModalSubtitle').textContent='Clinical profile • demo record';
+  document.getElementById('patientModalDetails').innerHTML=
+    '<div class="detail-box"><small>Patient</small><strong>'+escapeHtml(p.meta)+'</strong></div>'+
+    '<div class="detail-box"><small>MRN</small><strong class="mono">'+escapeHtml(p.mrn)+'</strong></div>'+
+    '<div class="detail-box"><small>Visit type</small><strong>'+escapeHtml(p.visit)+'</strong></div>'+
+    '<div class="detail-box"><small>Status</small><strong>'+escapeHtml(p.status)+'</strong></div>'+
+    '<div class="detail-box"><small>Appointment</small><strong>'+escapeHtml(p.time)+'</strong></div>'+
+    '<div class="detail-box"><small>Source</small><strong>Demo data</strong></div>';
+  document.getElementById('modalPrimaryAction').textContent='Close';
+  document.getElementById('modalPrimaryAction').onclick=closePatientModal;
+  document.getElementById('patientModalBackdrop').classList.add('open');
+}
+function editPatient(btn){
+  const p=patientFromButton(btn); if(!p)return;
+  document.getElementById('patientModalTitle').textContent='Edit '+p.name;
+  document.getElementById('patientModalSubtitle').textContent='Prototype edit form — connect to your backend to persist changes.';
+  document.getElementById('patientModalDetails').innerHTML=
+    '<div class="detail-box"><small>Patient</small><strong>'+escapeHtml(p.name)+'</strong></div>'+
+    '<div class="detail-box"><small>MRN</small><strong class="mono">'+escapeHtml(p.mrn)+'</strong></div>'+
+    '<div class="field"><label>Visit type</label><div class="input-wrap"><select><option>'+escapeHtml(p.visit)+'</option><option>New consultation</option><option>Follow-up</option><option>Post-op review</option></select></div></div>'+
+    '<div class="field"><label>Status</label><div class="input-wrap"><select><option>'+escapeHtml(p.status)+'</option><option>Scheduled</option><option>In progress</option><option>Completed</option></select></div></div>';
+  const a=document.getElementById('modalPrimaryAction'); a.textContent='Save changes'; a.onclick=()=>{showToast('Changes saved locally for this prototype','success');closePatientModal();};
+  document.getElementById('patientModalBackdrop').classList.add('open');
+}
+function closePatientModal(){document.getElementById('patientModalBackdrop')?.classList.remove('open');}
+function escapeHtml(v){return String(v).replace(/[&<>'"]/g,m=>({'&':'&amp;','<':'&lt;','>':'&gt;',"'":'&#39;','"':'&quot;'}[m]));}
+function exportPatientsCSV(){
+  const rows=(window._patientRows||[]).filter(x=>x.tr.style.display!=='none');
+  if(!rows.length){showToast('No visible patients to export','error');return;}
+  const csv=[['Patient','MRN','Visit Type','Status','Time'],...rows.map(x=>[x.tr.querySelector('.p-nm')?.innerText||'',x.tr.querySelector('.mrn')?.innerText||'',x.tr.cells[2]?.innerText.trim()||'',x.tr.cells[3]?.innerText.trim()||'',x.tr.cells[4]?.innerText.trim()||''])]
+    .map(r=>r.map(v=>'"'+String(v).replace(/"/g,'""')+'"').join(',')).join('\
+');
+  const blob=new Blob([csv],{type:'text/csv;charset=utf-8'}), url=URL.createObjectURL(blob), a=document.createElement('a');
+  a.href=url; a.download='sardar-trust-patients.csv'; a.click(); URL.revokeObjectURL(url); showToast(rows.length+' patient records exported','success');
+}
+function applyDiagnosticsFilters(){
+  const q=(document.getElementById('diagSearch')?.value||'').trim().toLowerCase();
+  const type=document.getElementById('diagTypeFilter')?.value||'All test types';
+  const status=document.getElementById('diagStatusFilter')?.value||'All statuses';
+  const rows=Array.from(document.querySelectorAll('#diagnosticsRows tr'));
+  let shown=0;
+  rows.forEach(tr=>{
+    const text=tr.innerText.toLowerCase();
+    const typeOk=type==='All test types'||tr.dataset.type===type;
+    const statusOk=status==='All statuses'||tr.dataset.status===status;
+    const qOk=!q||text.includes(q);
+    const visible=qOk&&typeOk&&statusOk;
+    tr.style.display=visible?'':'none'; if(visible)shown++;
+  });
+  document.getElementById('diagEmpty')?.classList.toggle('show',shown===0);
+  document.getElementById('diagnosticsTable')?.style.setProperty('display',shown===0?'none':'table');
+  const count=document.getElementById('diagResultsCount'); if(count)count.textContent=shown+' shown';
+  showToast(shown+' matching diagnostic'+(shown===1?'':'s')+' found','success');
+}
+function resetDiagnosticsFilters(){
+  const q=document.getElementById('diagSearch'); const t=document.getElementById('diagTypeFilter'); const s=document.getElementById('diagStatusFilter');
+  if(q)q.value=''; if(t)t.value='All test types'; if(s)s.value='All statuses';
+  const sd=document.getElementById('diagStartDate'); const ed=document.getElementById('diagEndDate');
+  if(sd)sd.value='2026-08-21'; if(ed)ed.value='2026-08-21';
+  document.querySelectorAll('#diagnosticsRows tr').forEach(tr=>tr.style.display='');
+  document.getElementById('diagEmpty')?.classList.remove('show');
+  document.getElementById('diagnosticsTable')?.style.setProperty('display','table');
+  const count=document.getElementById('diagResultsCount'); if(count)count.textContent='4 shown';
+  showToast('Diagnostic filters reset','info');
+}
+
 </script>
 
 </body>
