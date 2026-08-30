@@ -514,7 +514,31 @@
   }
 
   .diagnostic-visit-section{display:none;min-height:calc(100vh - 68px);background:var(--surface);}
-  .diagnostic-visit-shell{ width:min(980px,calc(100% - 28px));margin:0 auto;padding:15px 0 40px; }
+  .diagnostic-visit-shell{ display:grid; grid-template-columns:260px minmax(0,1fr); min-height:calc(100vh - 68px); }
+  .dv-sidebar{ background:var(--surface); border-right:1px solid var(--line); position:sticky; top:68px; height:calc(100vh - 68px); overflow:auto; }
+  .dv-sidebar-title{ height:34px; display:flex; align-items:center; gap:8px; padding:0 14px; background:var(--primary); color:#fff; font-size:13px; font-weight:700; letter-spacing:.2px; }
+  .dv-sidebar-search{ padding:12px 14px 8px; border-bottom:1px solid var(--line-soft); }
+  .dv-sidebar-search-wrap{ position:relative; }
+  .dv-sidebar-search-wrap svg{ position:absolute; left:10px; top:50%; transform:translateY(-50%); width:14px; height:14px; color:var(--ink-faint); pointer-events:none; }
+  .dv-sidebar-search input{ width:100%; height:34px; border:1px solid var(--line); border-radius:7px; padding:0 10px 0 30px; font-size:12.5px; background:var(--surface); color:var(--ink); box-sizing:border-box; }
+  .dv-sidebar-search input:focus{ outline:none; border-color:var(--primary-light); }
+  .dv-filter-chips{ display:flex; gap:6px; padding:10px 14px 12px; border-bottom:1px solid var(--line-soft); flex-wrap:wrap; }
+  .dv-filter-chip{ display:flex; align-items:center; gap:5px; padding:5px 10px; border-radius:20px; border:1px solid var(--line); background:var(--surface); color:var(--ink-soft); font-size:11.5px; font-weight:700; cursor:pointer; transition:background .15s,border-color .15s,color .15s; }
+  .dv-filter-chip:hover{ border-color:var(--primary-light); color:var(--primary); }
+  .dv-filter-chip.active{ background:var(--primary); border-color:var(--primary); color:#fff; }
+  .dv-filter-chip .n{ font-size:10.5px; opacity:.85; }
+  .dv-nav-list{ padding:8px; }
+  .dv-nav-item{ display:flex; align-items:center; gap:8px; padding:9px 10px; border-radius:8px; font-size:12.5px; font-weight:600; color:var(--ink-soft); cursor:pointer; transition:background .15s,color .15s; }
+  .dv-nav-item:hover{ background:var(--primary-tint); color:var(--primary); }
+  .dv-nav-item.active{ background:var(--primary); color:#fff; }
+  .dv-nav-item.hidden{ display:none; }
+  .dv-nav-dot{ width:7px; height:7px; border-radius:50%; background:var(--ink-faint); flex-shrink:0; }
+  .dv-nav-item[data-status="draft"] .dv-nav-dot{ background:var(--warning); }
+  .dv-nav-item[data-status="completed"] .dv-nav-dot{ background:var(--success); }
+  .dv-nav-item.active .dv-nav-dot{ background:#fff; }
+  .dv-nav-empty{ padding:14px 12px; font-size:12px; color:var(--ink-faint); text-align:center; display:none; }
+  .dv-nav-empty.show{ display:block; }
+  .dv-main{ min-width:0; padding:15px 20px 40px; }
   .dv-card{ background:var(--surface); }
   .dv-topbar{ display:grid;grid-template-columns:1fr 1fr auto;gap:14px;align-items:center; padding:0 0 12px;background:var(--surface);border-bottom:2px solid var(--primary); margin-bottom:20px; }
   .dv-top-field{display:flex;align-items:center;gap:8px;min-width:0;}
@@ -577,7 +601,7 @@
   .dv-bottom-note{font-size:12.5px;color:var(--accent);margin-top:14px;padding:16px 18px 20px;}
   .dv-checkout{ height:32px;border:1px solid var(--line);border-radius:6px;background:var(--bg);color:var(--ink-soft); font-size:12.5px;font-weight:700;padding:0 14px;margin-left:8px;cursor:pointer }
   @media(max-width:800px){
-    .diagnostic-visit-shell{width:calc(100% - 18px)}
+    .diagnostic-visit-shell{grid-template-columns:220px minmax(0,1fr)}
     .dv-topbar{grid-template-columns:1fr 1fr}.dv-saved{grid-column:1/-1;justify-self:end}
     .dv-patient-grid{grid-template-columns:1fr 1fr}
     .dv-layout, .dv-eye-block, .dv-biometry-grid{grid-template-columns:1fr}
@@ -588,6 +612,9 @@
     .dv-dim-grid{grid-template-columns:1fr}
     .dv-topbar{grid-template-columns:1fr}
     .dv-saved{grid-column:auto;justify-self:start}
+    .diagnostic-visit-shell{display:block}
+    .dv-sidebar{position:relative;height:auto;border-right:0;border-bottom:1px solid var(--line);top:0;}
+    .dv-main{padding:10px}
   }
 
   .diagnostics-page{display:none;}
@@ -1203,6 +1230,33 @@
 
 <div id="diagnosticVisitSection" class="diagnostic-visit-section">
   <div class="diagnostic-visit-shell">
+    <aside class="dv-sidebar">
+      <div class="dv-sidebar-title"><span aria-hidden="true">&#9635;</span> Diagnostic Tests</div>
+      <div class="dv-sidebar-search">
+        <div class="dv-sidebar-search-wrap">
+          <svg aria-hidden="true" focusable="false" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="M21 21l-4.35-4.35"/></svg>
+          <input type="text" id="dvTestSearch" placeholder="Search tests…" autocomplete="off" oninput="filterDiagnosticTests()">
+        </div>
+      </div>
+      <div class="dv-filter-chips" id="dvFilterChips">
+        <div class="dv-filter-chip active" data-status="all" onclick="setDiagnosticStatusFilter('all')">All <span class="n" id="dvCountAll">8</span></div>
+        <div class="dv-filter-chip" data-status="pending" onclick="setDiagnosticStatusFilter('pending')">Pending <span class="n" id="dvCountPending">8</span></div>
+        <div class="dv-filter-chip" data-status="draft" onclick="setDiagnosticStatusFilter('draft')">Draft <span class="n" id="dvCountDraft">0</span></div>
+      </div>
+      <div class="dv-nav-list" id="dvNavList">
+        <div class="dv-nav-item" data-target="dvBscanAccordion" data-status="pending" onclick="jumpToDiagnosticTest('dvBscanAccordion')"><span class="dv-nav-dot"></span>B-Scan Ultrasound report</div>
+        <div class="dv-nav-item" data-target="dvOctAccordion" data-status="pending" onclick="jumpToDiagnosticTest('dvOctAccordion')"><span class="dv-nav-dot"></span>OCT-Macula Report</div>
+        <div class="dv-nav-item" data-target="dvFfaAccordion" data-status="pending" onclick="jumpToDiagnosticTest('dvFfaAccordion')"><span class="dv-nav-dot"></span>Fundus Fluorescein Angiography</div>
+        <div class="dv-nav-item" data-target="dvFundusAccordion" data-status="pending" onclick="jumpToDiagnosticTest('dvFundusAccordion')"><span class="dv-nav-dot"></span>Fundus Photographs</div>
+        <div class="dv-nav-item" data-target="dvVisualFieldsAccordion" data-status="pending" onclick="jumpToDiagnosticTest('dvVisualFieldsAccordion')"><span class="dv-nav-dot"></span>Visual Fields Result</div>
+        <div class="dv-nav-item" data-target="dvOctRnlAccordion" data-status="pending" onclick="jumpToDiagnosticTest('dvOctRnlAccordion')"><span class="dv-nav-dot"></span>OCT Retinal Nerve Fibre Layer + GCC</div>
+        <div class="dv-nav-item" data-target="dvBiometryAccordion" data-status="pending" onclick="jumpToDiagnosticTest('dvBiometryAccordion')"><span class="dv-nav-dot"></span>Biometry</div>
+        <div class="dv-nav-item" data-target="dvOtherAccordion" data-status="pending" onclick="jumpToDiagnosticTest('dvOtherAccordion')"><span class="dv-nav-dot"></span>Other Medical Reports</div>
+      </div>
+      <div class="dv-nav-empty" id="dvNavEmpty">No matching tests</div>
+    </aside>
+
+    <div class="dv-main">
     <div class="dv-card">
       <div class="dv-topbar">
         <div class="dv-top-field">
@@ -1320,7 +1374,7 @@
             <label>Conclusion:</label>
             <textarea id="dvConclusion"></textarea>
           </div>
-          <button class="dv-draft" type="button" onclick="showToast('Diagnostic visit saved as Draft','success')">Draft</button>
+          <button class="dv-draft" type="button" onclick="markTestStatus('dvBscanAccordion','draft');showToast('Diagnostic visit saved as Draft','success')">Draft</button>
         </div>
       </section>
 
@@ -1328,14 +1382,14 @@
         <div class="dv-acc-head"><span>OCT-Macula Report</span><span class="dv-acc-chevron">&#8964;</span></div>
         <div class="dv-acc-body">
           <textarea class="dv-dim-input" style="height:80px" placeholder="OCT-Macula report..."></textarea>
-          <button class="dv-draft" type="button" onclick="showToast('OCT-Macula report saved as Draft','success')">Draft</button>
+          <button class="dv-draft" type="button" onclick="markTestStatus('dvOctAccordion','draft');showToast('OCT-Macula report saved as Draft','success')">Draft</button>
         </div>
       </div>
       <div class="dv-accordion" id="dvFfaAccordion">
         <div class="dv-acc-head"><span>Fundus Fluorescein Angiography</span><span class="dv-acc-chevron">&#8964;</span></div>
         <div class="dv-acc-body">
           <textarea class="dv-dim-input" style="height:80px" placeholder="Fundus fluorescein angiography report..."></textarea>
-          <button class="dv-draft" type="button" onclick="showToast('FFA report saved as Draft','success')">Draft</button>
+          <button class="dv-draft" type="button" onclick="markTestStatus('dvFfaAccordion','draft');showToast('FFA report saved as Draft','success')">Draft</button>
         </div>
       </div>
       <div class="dv-accordion" id="dvFundusAccordion">
@@ -1347,21 +1401,21 @@
             <input type="file" class="dv-file" accept="image/*" multiple>
           </div>
           <div class="dv-preview" style="max-width:340px;">No image uploaded yet</div>
-          <button class="dv-draft" type="button" onclick="showToast('Fundus photographs saved as Draft','success')">Draft</button>
+          <button class="dv-draft" type="button" onclick="markTestStatus('dvFundusAccordion','draft');showToast('Fundus photographs saved as Draft','success')">Draft</button>
         </div>
       </div>
       <div class="dv-accordion" id="dvVisualFieldsAccordion">
         <div class="dv-acc-head"><span>Visual Fields Result</span><span class="dv-acc-chevron">&#8964;</span></div>
         <div class="dv-acc-body">
           <textarea class="dv-dim-input" style="height:80px" placeholder="Visual fields result..."></textarea>
-          <button class="dv-draft" type="button" onclick="showToast('Visual fields result saved as Draft','success')">Draft</button>
+          <button class="dv-draft" type="button" onclick="markTestStatus('dvVisualFieldsAccordion','draft');showToast('Visual fields result saved as Draft','success')">Draft</button>
         </div>
       </div>
       <div class="dv-accordion" id="dvOctRnlAccordion">
         <div class="dv-acc-head"><span>OCT Retinal Nerve Fibre Layer + Ganglion Cell Count (GCC)</span><span class="dv-acc-chevron">&#8964;</span></div>
         <div class="dv-acc-body">
           <textarea class="dv-dim-input" style="height:80px" placeholder="RNFL + GCC report..."></textarea>
-          <button class="dv-draft" type="button" onclick="showToast('RNFL + GCC report saved as Draft','success')">Draft</button>
+          <button class="dv-draft" type="button" onclick="markTestStatus('dvOctRnlAccordion','draft');showToast('RNFL + GCC report saved as Draft','success')">Draft</button>
         </div>
       </div>
 
@@ -1414,7 +1468,7 @@
             <label>Conclusion:</label>
             <textarea placeholder="Summary / recommended IOL and power..."></textarea>
           </div>
-          <button class="dv-draft" type="button" onclick="showToast('Biometry saved as Draft','success')">Draft</button>
+          <button class="dv-draft" type="button" onclick="markTestStatus('dvBiometryAccordion','draft');showToast('Biometry saved as Draft','success')">Draft</button>
         </div>
       </section>
 
@@ -1448,13 +1502,14 @@
             <label>Comments:</label>
             <textarea></textarea>
           </div>
-          <button class="dv-draft" type="button" onclick="showToast('Other medical reports saved as Draft','success')">Draft</button>
+          <button class="dv-draft" type="button" onclick="markTestStatus('dvOtherAccordion','draft');showToast('Other medical reports saved as Draft','success')">Draft</button>
         </div>
       </section>
 
       <div class="dv-bottom-note">* Click this button to check out Patient Visit.
         <button class="dv-checkout" type="button" onclick="showToast('Patient visit checkout opened','success')">Check out</button>
       </div>
+    </div>
     </div>
   </div>
 </div>
@@ -2145,6 +2200,49 @@
       else showToast('Please enter an MRN','error');
     }
   });
+
+  // ===================== Diagnostic sidebar: search + status filter + jump-to-test =====================
+  let dvActiveStatusFilter='all';
+  function updateDiagnosticCounts(){
+    const items=Array.from(document.querySelectorAll('#dvNavList .dv-nav-item'));
+    const total=items.length;
+    const draft=items.filter(i=>i.dataset.status==='draft').length;
+    const pending=total-draft;
+    const elAll=document.getElementById('dvCountAll'); if(elAll)elAll.textContent=total;
+    const elPending=document.getElementById('dvCountPending'); if(elPending)elPending.textContent=pending;
+    const elDraft=document.getElementById('dvCountDraft'); if(elDraft)elDraft.textContent=draft;
+  }
+  function setDiagnosticStatusFilter(status){
+    dvActiveStatusFilter=status;
+    document.querySelectorAll('#dvFilterChips .dv-filter-chip').forEach(c=>c.classList.toggle('active',c.dataset.status===status));
+    filterDiagnosticTests();
+  }
+  function markTestStatus(id,status){
+    const item=document.querySelector('#dvNavList .dv-nav-item[data-target="'+id+'"]');
+    if(item)item.dataset.status=status;
+    updateDiagnosticCounts();
+    filterDiagnosticTests();
+  }
+  function filterDiagnosticTests(){
+    const q=(document.getElementById('dvTestSearch')?.value||'').trim().toLowerCase();
+    const items=Array.from(document.querySelectorAll('#dvNavList .dv-nav-item'));
+    let shown=0;
+    items.forEach(item=>{
+      const textOk=!q||item.textContent.toLowerCase().includes(q);
+      const statusOk=dvActiveStatusFilter==='all'||item.dataset.status===dvActiveStatusFilter;
+      const match=textOk&&statusOk;
+      item.classList.toggle('hidden',!match);
+      if(match)shown++;
+    });
+    document.getElementById('dvNavEmpty')?.classList.toggle('show',shown===0);
+  }
+  function jumpToDiagnosticTest(id){
+    const target=document.getElementById(id);
+    if(!target)return;
+    target.scrollIntoView({behavior:'smooth',block:'start'});
+    document.querySelectorAll('#dvNavList .dv-nav-item').forEach(i=>i.classList.toggle('active',i.dataset.target===id));
+  }
+  updateDiagnosticCounts();
 
   // Show the chosen filename / image preview next to each styled "Choose File" button.
   document.querySelectorAll('.dv-file-wrap input[type=file]').forEach(inp=>{
