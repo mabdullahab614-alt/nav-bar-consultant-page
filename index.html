@@ -725,11 +725,6 @@
     .profile-row{grid-template-columns:125px 1fr;}
   }
 
-  /* WHITE BACKGROUND FIX */
-  html, body {
-    background: #FFFFFF !important;
-  }
-
   /* SARDAR TRUST LOGO */
   .nv-logo.actual-logo{
     background:#fff;
@@ -767,6 +762,476 @@
     display:block;
     object-fit:cover;
     border-radius:50%;
+  }
+
+
+  /* ================================================================
+     GLOBAL DARK MODE — FINAL OVERRIDE
+     Keeps every dashboard page visually consistent:
+     Overview / Patients / Clinical Visit / Diagnostic Visit /
+     Diagnostics / Consultant Profile / Modals / Tables / Forms
+     ================================================================ */
+
+  html {
+    background: var(--bg);
+  }
+
+  body.dark {
+    color-scheme: dark;
+    --bg:#0B0F14;
+    --surface:#151A22;
+    --surface-2:#1B212B;
+    --surface-3:#202733;
+    --ink:#F4F7FB;
+    --ink-soft:#AEB7C5;
+    --ink-faint:#778293;
+    --line:#2B3441;
+    --line-soft:#222B36;
+    --primary:#4F6BFF;
+    --primary-dark:#3449B8;
+    --primary-light:#7187FF;
+    --primary-tint:#1A2754;
+    --accent:#EF6262;
+    --accent-tint:#3B2226;
+    --success:#39C98A;
+    --success-tint:#12372B;
+    --warning:#D5A33A;
+    --warning-tint:#382D17;
+    --shadow-sm:0 1px 2px rgba(0,0,0,.24);
+    --shadow-md:0 14px 34px rgba(0,0,0,.34);
+
+    background:var(--bg) !important;
+    color:var(--ink);
+  }
+
+  body.dark,
+  body.dark main,
+  body.dark section,
+  body.dark article,
+  body.dark aside,
+  body.dark header,
+  body.dark footer,
+  body.dark .content,
+  body.dark #mainContent,
+  body.dark #overviewSection,
+  body.dark #patientsSection,
+  body.dark .diagnostics-page,
+  body.dark .consultant-profile-section,
+  body.dark .clinical-visit-section,
+  body.dark .diagnostic-visit-section,
+  body.dark .clinical-main,
+  body.dark .clinical-sidebar,
+  body.dark .dv-main,
+  body.dark .dv-sidebar {
+    background-color:var(--bg);
+    color:var(--ink);
+  }
+
+  /* Header / navigation */
+  body.dark .navbar {
+    background:rgba(21,26,34,.88) !important;
+    border-bottom-color:var(--line);
+    box-shadow:0 1px 0 rgba(255,255,255,.025), 0 6px 20px rgba(0,0,0,.18);
+  }
+  body.dark .navbar.scrolled {
+    background:rgba(21,26,34,.97) !important;
+    border-bottom-color:var(--line);
+  }
+  body.dark .nv-brand-text .n,
+  body.dark .tb-profile-name,
+  body.dark .page-head h1,
+  body.dark .section-title h2,
+  body.dark .chart-head h3,
+  body.dark .panel-head h3,
+  body.dark .p-nm,
+  body.dark .dv-top-field label,
+  body.dark .dv-section-title,
+  body.dark .clinical-label,
+  body.dark .clinical-note,
+  body.dark .history-title,
+  body.dark .detail-box strong,
+  body.dark .profile-value,
+  body.dark .profile-avatar-name {
+    color:var(--ink);
+  }
+
+  body.dark .nv-item,
+  body.dark .nv-subitem,
+  body.dark .tab,
+  body.dark .diagnostics-tab,
+  body.dark .toggle,
+  body.dark .today-chip,
+  body.dark .results-count,
+  body.dark .tb-profile-role,
+  body.dark .tb-profile .chev,
+  body.dark .clinical-label,
+  body.dark .clinical-note,
+  body.dark .history-title,
+  body.dark .profile-label,
+  body.dark .profile-avatar-role {
+    color:var(--ink-soft);
+  }
+
+  body.dark .nv-item:hover,
+  body.dark .nv-subitem:hover,
+  body.dark .nv-icon-round:hover,
+  body.dark .icon-btn:hover,
+  body.dark .btn-ghost:hover,
+  body.dark .profile-back-btn:hover {
+    background:var(--primary-tint);
+    color:var(--primary-light);
+  }
+
+  body.dark .nv-item.active,
+  body.dark .clinical-tab.active,
+  body.dark .dv-filter-chip.active,
+  body.dark .dv-nav-item.active {
+    background:var(--primary);
+    color:#fff;
+  }
+
+  body.dark .nv-submenu,
+  body.dark .tb-dropdown,
+  body.dark .nv-mobile-menu {
+    background:var(--surface) !important;
+    border-color:var(--line);
+    box-shadow:var(--shadow-md);
+  }
+
+  body.dark .tb-dropdown-head,
+  body.dark .tb-dropdown-sep,
+  body.dark .panel-head,
+  body.dark .clinical-sidebar,
+  body.dark .dv-sidebar,
+  body.dark .dv-sidebar-search,
+  body.dark .dv-filter-chips {
+    border-color:var(--line);
+  }
+
+  /* Cards, panels, charts and dashboard surfaces */
+  body.dark .stat-card,
+  body.dark .chart-card,
+  body.dark .dark-donut-card,
+  body.dark .filter-card,
+  body.dark .panel,
+  body.dark .patient-mrn-card,
+  body.dark .patient-modal,
+  body.dark .consultant-profile-card,
+  body.dark .profile-avatar-card,
+  body.dark .dv-card,
+  body.dark .dv-panel,
+  body.dark .dv-symptoms,
+  body.dark .slit-item,
+  body.dark .posterior-card,
+  body.dark .vision-panel,
+  body.dark .patient-results-area {
+    background:var(--surface);
+    color:var(--ink);
+    border-color:var(--line);
+    box-shadow:var(--shadow-sm);
+  }
+
+  body.dark .stat-card:hover,
+  body.dark .chart-card:hover,
+  body.dark .dark-donut-card:hover {
+    box-shadow:var(--shadow-md);
+  }
+
+  body.dark .stat-label,
+  body.dark .stat-mini-label,
+  body.dark .pill,
+  body.dark .side-legend-item,
+  body.dark .diag-sub,
+  body.dark .diag-toolbar-note,
+  body.dark .dv-file-name,
+  body.dark .dv-dim-label,
+  body.dark .dv-comorbidity label,
+  body.dark .dv-biometry-table th {
+    color:var(--ink-soft);
+  }
+
+  body.dark .stat-value,
+  body.dark .stat-value.blue,
+  body.dark .stat-value.amber,
+  body.dark .stat-value.green,
+  body.dark .stat-value.coral {
+    color:#5D79FF !important;
+  }
+
+  /* Form controls — covers controls across ALL pages, including controls
+     that do not have one of the dashboard's component-specific classes. */
+  body.dark input,
+  body.dark select,
+  body.dark textarea,
+  body.dark button.btn-ghost,
+  body.dark .nv-search input,
+  body.dark .nv-icon-round,
+  body.dark .today-chip,
+  body.dark .icon-btn,
+  body.dark .patient-mrn-input,
+  body.dark .patient-mrn-btn,
+  body.dark .clinical-input,
+  body.dark .clinical-select,
+  body.dark .clinical-textarea,
+  body.dark .snapshot-input,
+  body.dark .snapshot-visit,
+  body.dark .dv-input,
+  body.dark .dv-select,
+  body.dark .dv-category,
+  body.dark .dv-dim-input,
+  body.dark .dv-file-btn,
+  body.dark .dv-draft,
+  body.dark .dv-checkout,
+  body.dark .profile-back-btn {
+    background-color:var(--surface-2);
+    color:var(--ink);
+    border-color:var(--line);
+  }
+
+  body.dark input::placeholder,
+  body.dark textarea::placeholder {
+    color:var(--ink-faint);
+  }
+
+  body.dark input:focus,
+  body.dark select:focus,
+  body.dark textarea:focus {
+    border-color:var(--primary-light);
+    box-shadow:0 0 0 3px rgba(79,107,255,.18);
+    outline:none;
+  }
+
+  body.dark option {
+    background:var(--surface-2);
+    color:var(--ink);
+  }
+
+  body.dark input[type="date"]::-webkit-calendar-picker-indicator {
+    filter:invert(1) opacity(.75);
+  }
+
+  /* Toggle/range controls */
+  body.dark .vol-toggle {
+    background:var(--bg);
+    border:1px solid var(--line-soft);
+  }
+  body.dark .vol-toggle button {
+    color:var(--ink-soft);
+  }
+  body.dark .vol-toggle button.active {
+    background:var(--surface-2);
+    color:var(--primary-light);
+    box-shadow:var(--shadow-sm);
+  }
+
+  /* Tables */
+  body.dark table,
+  body.dark .diag-table,
+  body.dark .dv-eye-table,
+  body.dark .refraction-table,
+  body.dark .dv-biometry-table {
+    color:var(--ink);
+  }
+  body.dark thead th,
+  body.dark .dv-eye-table th {
+    background:var(--surface-3) !important;
+    color:var(--ink-soft);
+    border-color:var(--line);
+  }
+  body.dark tbody td,
+  body.dark .dv-eye-table td,
+  body.dark .refraction-table td,
+  body.dark .refraction-table th {
+    border-color:var(--line);
+  }
+  body.dark tbody tr:hover {
+    background:var(--surface-2) !important;
+  }
+  body.dark tbody tr:last-child td {
+    border-bottom-color:transparent;
+  }
+  body.dark .refraction-table th {
+    background:var(--primary-dark) !important;
+    color:#fff;
+  }
+  body.dark .refraction-table select,
+  body.dark .refraction-table input,
+  body.dark .dv-eye-table select {
+    background:var(--surface-2);
+    color:var(--ink);
+    border-color:var(--line);
+  }
+
+  /* Clinical visit */
+  body.dark .clinical-toolbar {
+    border-bottom-color:var(--primary);
+  }
+  body.dark .clinical-heading,
+  body.dark .dv-acc-head {
+    color:var(--primary-light);
+    border-bottom-color:var(--line);
+  }
+  body.dark .clinical-section,
+  body.dark .dv-accordion {
+    color:var(--ink);
+  }
+  body.dark .history-grid,
+  body.dark .history-cell,
+  body.dark .reactivity-row {
+    border-color:var(--line);
+  }
+  body.dark .vision-panel-head {
+    background:var(--surface-3);
+    color:var(--ink-soft);
+  }
+  body.dark .vision-row {
+    border-color:var(--line);
+  }
+  body.dark .vision-row span {
+    color:var(--ink-soft);
+  }
+  body.dark .vision-row select,
+  body.dark .reactivity-row select {
+    background:var(--surface-2);
+    color:var(--ink);
+    border-color:var(--line);
+  }
+  body.dark .quick-btn,
+  body.dark .outline-btn {
+    background:var(--surface);
+    color:var(--primary-light);
+    border-color:var(--primary-light);
+  }
+  body.dark .plus {
+    background:var(--primary-tint);
+    color:var(--primary-light);
+    border-color:var(--primary-light);
+  }
+
+  /* Diagnostic visit */
+  body.dark .dv-topbar,
+  body.dark .dv-acc-body {
+    background:var(--surface);
+  }
+  body.dark .dv-nav-item {
+    color:var(--ink-soft);
+  }
+  body.dark .dv-nav-item:hover {
+    background:var(--primary-tint);
+    color:var(--primary-light);
+  }
+  body.dark .dv-filter-chip {
+    background:var(--surface-2);
+    color:var(--ink-soft);
+    border-color:var(--line);
+  }
+  body.dark .dv-panel {
+    background:var(--surface-2);
+  }
+  body.dark .dv-preview {
+    background:var(--bg);
+    border-color:var(--line);
+  }
+
+  /* Diagnostics page */
+  body.dark .diagnostics-tabs {
+    border-bottom-color:var(--line);
+  }
+  body.dark .diagnostics-tab:hover {
+    color:var(--ink);
+  }
+  body.dark .diag-badge,
+  body.dark .result-pill.review {
+    background:var(--primary-tint);
+    color:var(--primary-light);
+  }
+  body.dark .result-pill.pending {
+    background:var(--warning-tint);
+    color:var(--warning);
+  }
+  body.dark .result-pill.ready {
+    background:var(--success-tint);
+    color:var(--success);
+  }
+
+  /* Profile */
+  body.dark .consultant-profile-card-head {
+    background:var(--primary-tint);
+    color:var(--primary-light);
+    border-bottom-color:var(--line);
+  }
+  body.dark .profile-row {
+    border-bottom-color:var(--line);
+  }
+
+  /* Modal / toast */
+  body.dark .toast {
+    background:var(--surface-2);
+    color:var(--ink);
+    border-color:var(--line);
+  }
+  body.dark .modal-backdrop {
+    background:rgba(0,0,0,.68);
+  }
+  body.dark .modal-close {
+    background:var(--surface-2);
+    color:var(--ink-soft);
+    border-color:var(--line);
+  }
+  body.dark .detail-box {
+    background:rgba(255,255,255,.025);
+    border-color:var(--line);
+  }
+
+  /* Empty state illustration and other formerly hard-coded light surfaces */
+  body.dark .empty-illustration circle[stroke="#E4E4E9"] {
+    stroke:var(--line) !important;
+  }
+  body.dark .empty-illustration circle[fill="#0B0B0F"] {
+    fill:var(--ink) !important;
+  }
+
+  /* Preserve the hospital logo's intentional white canvas. */
+  body.dark .nv-logo.actual-logo,
+  body.dark .avatar-circle.actual-profile-logo,
+  body.dark .tb-profile-avatar.actual-top-logo {
+    background:#fff !important;
+  }
+
+  /* Scrollbar */
+  body.dark ::-webkit-scrollbar {
+    width:10px;
+    height:10px;
+  }
+  body.dark ::-webkit-scrollbar-track {
+    background:var(--bg);
+  }
+  body.dark ::-webkit-scrollbar-thumb {
+    background:#343E4C;
+    border-radius:999px;
+    border:2px solid var(--bg);
+  }
+  body.dark ::-webkit-scrollbar-thumb:hover {
+    background:#465365;
+  }
+
+  /* Prevent browser autofill from flashing a white field in dark mode. */
+  body.dark input:-webkit-autofill,
+  body.dark input:-webkit-autofill:hover,
+  body.dark input:-webkit-autofill:focus,
+  body.dark textarea:-webkit-autofill,
+  body.dark select:-webkit-autofill {
+    -webkit-text-fill-color:var(--ink);
+    -webkit-box-shadow:0 0 0 1000px var(--surface-2) inset;
+    transition:background-color 9999s ease-out 0s;
+  }
+
+  /* Mobile dark surfaces */
+  @media (max-width: 650px) {
+    body.dark .clinical-sidebar,
+    body.dark .dv-sidebar {
+      background:var(--surface);
+    }
   }
 
 </style>
@@ -1915,11 +2380,45 @@
     toggleEl.setAttribute('aria-expanded', open);
   }
 
+
+  // ===================== Global chart theme sync =====================
+  function refreshChartTheme(){
+    const dark = document.body.classList.contains('dark');
+    const text = dark ? '#AEB7C5' : '#57575F';
+    const muted = dark ? '#778293' : '#96969E';
+    const grid = dark ? '#2B3441' : '#EFEFF3';
+    const tooltipBg = dark ? '#202733' : '#0B0B0F';
+
+    try {
+      if (typeof Chart !== 'undefined') {
+        Chart.defaults.color = text;
+        Chart.defaults.borderColor = grid;
+        Chart.defaults.plugins.tooltip.backgroundColor = tooltipBg;
+      }
+
+      if (typeof volumeChart !== 'undefined' && volumeChart) {
+        const opts = volumeChart.options;
+        if (opts.plugins?.legend?.labels) opts.plugins.legend.labels.color = text;
+        if (opts.scales?.x?.ticks) opts.scales.x.ticks.color = muted;
+        if (opts.scales?.y?.ticks) opts.scales.y.ticks.color = muted;
+        if (opts.scales?.y?.grid) opts.scales.y.grid.color = grid;
+        volumeChart.update('none');
+      }
+
+      Chart?.getChart?.(document.getElementById('ageGenderChart'))?.update('none');
+      Chart?.getChart?.(document.getElementById('typeChart'))?.update('none');
+      Chart?.getChart?.(document.getElementById('specialtyChart'))?.update('none');
+    } catch(e) {
+      console.warn('Chart theme refresh skipped:', e);
+    }
+  }
+
   // ===================== Dark mode =====================
   function toggleDarkMode(){
     document.body.classList.toggle('dark');
     localStorage.setItem('stEyeTheme',document.body.classList.contains('dark')?'dark':'light');
     updateThemeText();
+    refreshChartTheme();
     showToast(document.body.classList.contains('dark')?'Dark mode enabled':'Light mode enabled','info');
   }
   function updateThemeText(){
@@ -2442,6 +2941,7 @@
     const storedTheme=localStorage.getItem('stEyeTheme');
     if(storedTheme==='dark') document.body.classList.add('dark');
     updateThemeText();
+    refreshChartTheme();
     document.getElementById('patientResultsArea')?.classList.add('open');
   })();
 </script>
