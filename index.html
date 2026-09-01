@@ -1430,7 +1430,7 @@
   <div class="overview-main-grid">
     <div class="chart-card chart-card-full overview-trend-card">
       <div class="chart-head">
-        <div><h3 id="volTitle">Patients trend this week</h3><p id="volSub">New + follow-up patients over time</p></div>
+        <div><h3 id="volTitle">Patients trend this week</h3><p id="volSub">Clinical visits per day (actual, last 7 days)</p></div>
         <div class="vol-filter-groups" aria-label="Patient trend filters">
           <div class="vol-toggle" role="group" aria-label="Date range">
             <button type="button" class="active" data-range="week" onclick="setVolRange('week')">This Week</button>
@@ -1474,7 +1474,7 @@
 
     <div class="chart-card overview-demographic-card">
       <div class="chart-head">
-        <div><h3>Patients by age &amp; gender</h3><p>Active patient base, this month</p></div>
+        <div><h3>Patients by age &amp; gender</h3><p>All 13,510 registered patients (all-time)</p></div>
       </div>
       <div class="chart-wrap overview-demographic-wrap"><canvas id="ageGenderChart"></canvas></div>
     </div>
@@ -2480,16 +2480,16 @@
 
     const volRanges = {
       week:{
-        title:'Patient volume this week', sub:'New + follow-up patients over time',
-        labels:['Mon','Tue','Wed','Thu','Fri','Sat'],
-        primaryLabel:'New', secondaryLabel:'Follow-up',
-        primary:[9,12,14,10,16,11], secondary:[5,6,4,7,5,8]
+        title:'Patient volume this week', sub:'Clinical visits per day (actual, last 7 days)',
+        labels:['Wed 22','Thu 23','Fri 24','Sat 25','Sun 26','Mon 27','Tue 28*'],
+        primaryLabel:'Clinical visits', secondaryLabel:'',
+        primary:[419,298,317,364,0,587,182], secondary:[0,0,0,0,0,0,0]
       },
       month:{
-        title:'Patient volume this month', sub:'New + follow-up patients over time',
-        labels:['Wk 1','Wk 2','Wk 3','Wk 4'],
-        primaryLabel:'New', secondaryLabel:'Follow-up',
-        primary:[52,61,58,64], secondary:[24,27,22,29]
+        title:'Patient volume this month', sub:'Clinical visits per week (actual, last 6 weeks)',
+        labels:['Wk of Jun 22','Wk of Jun 29','Wk of Jul 6','Wk of Jul 13','Wk of Jul 20','Wk of Jul 27*'],
+        primaryLabel:'Clinical visits', secondaryLabel:'',
+        primary:[956,1323,1435,2979,2316,769], secondary:[0,0,0,0,0,0]
       },
       start:{
         title:'Patient volume — from start', sub:'Total clinical visits per month (actual)',
@@ -2669,8 +2669,8 @@
       data:{
         labels:['0-10','11-20','21-30','31-40','41-50','51-60','61-70','71-80','81+'],
         datasets:[
-          { label:'Male', data:[-4,-6,-9,-11,-13,-15,-14,-9,-5], backgroundColor:primary, borderRadius:4, barPercentage:.75, categoryPercentage:.8 },
-          { label:'Female', data:[3,5,8,10,12,16,15,10,6], backgroundColor:'#E0729B', borderRadius:4, barPercentage:.75, categoryPercentage:.8 }
+          { label:'Male', data:[-753,-816,-555,-579,-1061,-1051,-851,-329,-65], backgroundColor:primary, borderRadius:4, barPercentage:.75, categoryPercentage:.8 },
+          { label:'Female', data:[659,988,794,930,1441,1333,902,352,51], backgroundColor:'#E0729B', borderRadius:4, barPercentage:.75, categoryPercentage:.8 }
         ]
       },
       options:{
@@ -2685,13 +2685,13 @@
             bodyFont:{ size:12, family:'Inter' },
             callbacks:{
               title:(items)=> items.length ? `Age ${items[0].label}` : '',
-              label:(c)=> `${c.dataset.label}: ${Math.abs(c.parsed.x)}%`
+              label:(c)=> `${c.dataset.label}: ${Math.abs(c.parsed.x).toLocaleString()} patients`
             }
           }
         },
         scales:{
           x:{ stacked:true, grid:{ color:gridColor }, border:{ display:false },
-              ticks:{ color:'#96969E', font:{ size:10.5, family:'Inter' }, callback:(v)=> Math.abs(v)+'%' } },
+              ticks:{ color:'#96969E', font:{ size:10.5, family:'Inter' }, callback:(v)=> Math.abs(v).toLocaleString() } },
           y:{ stacked:true, grid:{ display:false }, border:{ display:false }, ticks:{ color:'#57575F', font:{ size:11, family:'Inter' } } }
         }
       }
